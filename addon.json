@@ -1,0 +1,26 @@
+{
+    "title": "[TylerAustin] Video Player - XF2",
+    "description": "Replace XF custom video player with our advanced modern custom video player for xenForo 2.x",
+    "version_id": 1000003,
+    "version_string": "1.0.0 Dev 4",
+    "dev": "TylerAustin",
+    "dev_url": "https://tyleraustins.com",
+    "faq_url": "",
+    "support_url": "",
+    "extra_urls": [],
+    "require": {
+        "XF": [
+            2030000,
+            "XenForo 2.3.0+"
+        ],
+        "php": [
+            "8.3.0",
+            "PHP 8.3.0+"
+        ],
+        "mysql": [
+            "8.0",
+            "MySQL 8.0+"
+        ]
+    },
+    "icon": "icon.png"
+}

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="custom_bb_code_desc.vidstack" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Embed an HTTPS video or HLS stream with optional WebVTT captions and chapters.]]></phrase>
+  <phrase title="custom_bb_code_desc.vidstackaudio" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Embed an HTTPS audio file with optional WebVTT caption tracks.]]></phrase>
+  <phrase title="custom_bb_code_example.vidstack" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[[vidstack]https://example.com/video.mp4[/vidstack]]]></phrase>
+  <phrase title="custom_bb_code_example.vidstackaudio" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[[vidstackaudio]https://example.com/audio.mp3[/vidstackaudio]]]></phrase>
+  <phrase title="custom_bb_code_output.vidstack" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Video player]]></phrase>
+  <phrase title="custom_bb_code_output.vidstackaudio" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Audio player]]></phrase>
+  <phrase title="custom_bb_code_title.vidstack" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Vidstack video]]></phrase>
+  <phrase title="custom_bb_code_title.vidstackaudio" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Vidstack audio]]></phrase>
+  <phrase title="option.tylVideoPlayer_audio" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Replace attachment audio]]></phrase>
+  <phrase title="option.tylVideoPlayer_enabled" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Enable custom players]]></phrase>
+  <phrase title="option.tylVideoPlayer_keyboard" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Vidstack keyboard shortcuts]]></phrase>
+  <phrase title="option.tylVideoPlayer_pauseOthers" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Pause other players]]></phrase>
+  <phrase title="option.tylVideoPlayer_seekStep" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Vidstack seek interval]]></phrase>
+  <phrase title="option.tylVideoPlayer_video" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Replace attachment video]]></phrase>
+  <phrase title="option.tylVideoPlayer_youtube" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Replace YouTube embeds]]></phrase>
+  <phrase title="option_explain.tylVideoPlayer_audio" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Use the selected custom player for audio attachments in threads, posts and Resource Manager content, including attachment lightboxes, and for uploaded Media Gallery audio pages and album lightboxes.]]></phrase>
+  <phrase title="option_explain.tylVideoPlayer_enabled" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Enable the selected custom player for supported media. Turn this off to retain XenForo default playback.]]></phrase>
+  <phrase title="option_explain.tylVideoPlayer_keyboard" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Enable keyboard shortcuts while the Vidstack player has focus. Video.js 10 uses the standard shortcuts included in its skin.]]></phrase>
+  <phrase title="option_explain.tylVideoPlayer_pauseOthers" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Pause other players using the selected custom library on this page when playback starts.]]></phrase>
+  <phrase title="option_explain.tylVideoPlayer_seekStep" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Seconds to skip with Vidstack seek buttons. Video.js 10 uses its standard 10-second seek interval.]]></phrase>
+  <phrase title="option_explain.tylVideoPlayer_video" version_id="1000001" version_string="1.0.0 Dev 2"><![CDATA[Use the selected custom player for video attachments in threads, posts and Resource Manager content, including attachment lightboxes, and for uploaded Media Gallery video pages and album lightboxes.]]></phrase>
+  <phrase title="option_explain.tylVideoPlayer_youtube" version_id="1000001" version_string="1.0.0 Dev 2"><![CDATA[Use the selected custom player for rendered YouTube videos and playlists, including third-party movie templates. XenForo consent placeholders remain unchanged until consent. Playlist controls include Previous, Next, and a link to the playlist on YouTube.]]></phrase>
+  <phrase title="option_group.tylVideoPlayer" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[[TylerAustin] Video Player]]></phrase>
+  <phrase title="option_group_description.tylVideoPlayer" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Player library and media replacement settings.]]></phrase>
+  <phrase title="tyl_video_player_accessibility" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Accessibility]]></phrase>
+  <phrase title="tyl_video_player_airplay" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[AirPlay]]></phrase>
+  <phrase title="tyl_video_player_announcements" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Announcements]]></phrase>
+  <phrase title="tyl_video_player_audio" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Audio]]></phrase>
+  <phrase title="tyl_video_player_auto" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Auto]]></phrase>
+  <phrase title="tyl_video_player_boost" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Boost]]></phrase>
+  <phrase title="tyl_video_player_caption_styles" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Caption Styles]]></phrase>
+  <phrase title="tyl_video_player_captions" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Captions]]></phrase>
+  <phrase title="tyl_video_player_captions_look_like_this" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Captions look like this]]></phrase>
+  <phrase title="tyl_video_player_chapters" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Chapters]]></phrase>
+  <phrase title="tyl_video_player_closed_captions_off" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Closed-Captions Off]]></phrase>
+  <phrase title="tyl_video_player_closed_captions_on" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Closed-Captions On]]></phrase>
+  <phrase title="tyl_video_player_color" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Color]]></phrase>
+  <phrase title="tyl_video_player_connected" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Connected]]></phrase>
+  <phrase title="tyl_video_player_connecting" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Connecting]]></phrase>
+  <phrase title="tyl_video_player_continue" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Continue]]></phrase>
+  <phrase title="tyl_video_player_default" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Default]]></phrase>
+  <phrase title="tyl_video_player_disabled" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Disabled]]></phrase>
+  <phrase title="tyl_video_player_disconnected" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Disconnected]]></phrase>
+  <phrase title="tyl_video_player_display_background" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Display Background]]></phrase>
+  <phrase title="tyl_video_player_download" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Download]]></phrase>
+  <phrase title="tyl_video_player_enter_fullscreen" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Enter Fullscreen]]></phrase>
+  <phrase title="tyl_video_player_enter_pip" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Enter PiP]]></phrase>
+  <phrase title="tyl_video_player_exit_fullscreen" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Exit Fullscreen]]></phrase>
+  <phrase title="tyl_video_player_exit_pip" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Exit PiP]]></phrase>
+  <phrase title="tyl_video_player_family" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Family]]></phrase>
+  <phrase title="tyl_video_player_font" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Font]]></phrase>
+  <phrase title="tyl_video_player_fullscreen" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Fullscreen]]></phrase>
+  <phrase title="tyl_video_player_google_cast" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Google Cast]]></phrase>
+  <phrase title="tyl_video_player_invalid_media" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[The media or caption address is invalid. Use a supported HTTPS media file and WebVTT tracks.]]></phrase>
+  <phrase title="tyl_video_player_keyboard_animations" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Keyboard Animations]]></phrase>
+  <phrase title="tyl_video_player_live" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[LIVE]]></phrase>
+  <phrase title="tyl_video_player_loop" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Loop]]></phrase>
+  <phrase title="tyl_video_player_mute" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Mute]]></phrase>
+  <phrase title="tyl_video_player_normal" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Normal]]></phrase>
+  <phrase title="tyl_video_player_off" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Off]]></phrase>
+  <phrase title="tyl_video_player_opacity" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Opacity]]></phrase>
+  <phrase title="tyl_video_player_pause" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Pause]]></phrase>
+  <phrase title="tyl_video_player_pip" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[PiP]]></phrase>
+  <phrase title="tyl_video_player_play" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Play]]></phrase>
+  <phrase title="tyl_video_player_playback" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Playback]]></phrase>
+  <phrase title="tyl_video_player_quality" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Quality]]></phrase>
+  <phrase title="tyl_video_player_replay" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Replay]]></phrase>
+  <phrase title="tyl_video_player_reset" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Reset]]></phrase>
+  <phrase title="tyl_video_player_seek" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Seek]]></phrase>
+  <phrase title="tyl_video_player_seek_backward" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Seek Backward]]></phrase>
+  <phrase title="tyl_video_player_seek_forward" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Seek Forward]]></phrase>
+  <phrase title="tyl_video_player_settings" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Settings]]></phrase>
+  <phrase title="tyl_video_player_shadow" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Shadow]]></phrase>
+  <phrase title="tyl_video_player_size" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Size]]></phrase>
+  <phrase title="tyl_video_player_skip_to_live" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Skip To Live]]></phrase>
+  <phrase title="tyl_video_player_speed" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Speed]]></phrase>
+  <phrase title="tyl_video_player_text" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Text]]></phrase>
+  <phrase title="tyl_video_player_text_background" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Text Background]]></phrase>
+  <phrase title="tyl_video_player_track" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Track]]></phrase>
+  <phrase title="tyl_video_player_unmute" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Unmute]]></phrase>
+  <phrase title="tyl_video_player_volume" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Volume]]></phrase>
+  <phrase title="option.tyl_video_player_remove_branding" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Remove Branding]]></phrase>
+  <phrase title="option_explain.tyl_video_player_remove_branding" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Tick this to remove branding, if you have bought branding free version.
+If not bought you can make payment <a href="https://wise.com/pay/me/nickb571">here</a> and remove the branding.]]></phrase>
+  <phrase title="tyl_video_player_branding" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Branding]]></phrase>
+  <phrase title="tyl_video_player_copyright_branding" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[<a href="https://tyleraustins.com" class="u-concealed" dir="ltr" target="_blank" rel="sponsored noopener">[TylerAustin] Video Player - XF2 - XF2 by XenShop © 2018 - {year}</a>]]></phrase>
+  <phrase title="option.tylVideoPlayer_engine" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Player library]]></phrase>
+  <phrase title="option_explain.tylVideoPlayer_engine" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Choose Video.js 10, the XenForo default player, or Vidstack. Changes apply to newly loaded forum pages; fully reload open forum pages after changing this setting. Each library offers its own available controls.]]></phrase>
+  <phrase title="tyl_video_player_engine_videojs10" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Video.js 10]]></phrase>
+  <phrase title="tyl_video_player_engine_xf" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[XenForo default]]></phrase>
+  <phrase title="tyl_video_player_engine_vidstack" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Vidstack]]></phrase>
+  <phrase title="tyl_video_player_caption_font_family" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Font family]]></phrase>
+  <phrase title="tyl_video_player_caption_font_size" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Font size]]></phrase>
+  <phrase title="tyl_video_player_caption_text_color" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Text color]]></phrase>
+  <phrase title="tyl_video_player_caption_text_opacity" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Text opacity]]></phrase>
+  <phrase title="tyl_video_player_caption_background_color" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Background color]]></phrase>
+  <phrase title="tyl_video_player_caption_background_opacity" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Background opacity]]></phrase>
+  <phrase title="tyl_video_player_caption_edge" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Text edge]]></phrase>
+  <phrase title="tyl_video_player_caption_sans" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Sans serif]]></phrase>
+  <phrase title="tyl_video_player_caption_serif" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Serif]]></phrase>
+  <phrase title="tyl_video_player_caption_monospace" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Monospace]]></phrase>
+  <phrase title="tyl_video_player_caption_cursive" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Cursive]]></phrase>
+  <phrase title="tyl_video_player_caption_smallcaps" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Small capitals]]></phrase>
+  <phrase title="tyl_video_player_caption_edge_none" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[None]]></phrase>
+  <phrase title="tyl_video_player_caption_edge_shadow" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Drop shadow]]></phrase>
+  <phrase title="tyl_video_player_caption_edge_outline" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Outline]]></phrase>
+  <phrase title="tyl_video_player_caption_edge_raised" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Raised]]></phrase>
+  <phrase title="tyl_video_player_caption_edge_depressed" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Depressed]]></phrase>
+  <phrase title="tyl_video_player_caption_white" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[White]]></phrase>
+  <phrase title="tyl_video_player_caption_black" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Black]]></phrase>
+  <phrase title="tyl_video_player_caption_red" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Red]]></phrase>
+  <phrase title="tyl_video_player_caption_green" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Green]]></phrase>
+  <phrase title="tyl_video_player_caption_blue" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Blue]]></phrase>
+  <phrase title="tyl_video_player_caption_yellow" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Yellow]]></phrase>
+  <phrase title="tyl_video_player_caption_cyan" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Cyan]]></phrase>
+  <phrase title="tyl_video_player_caption_magenta" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Magenta]]></phrase>
+  <phrase title="tyl_video_player_caption_percent_0" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[0%]]></phrase>
+  <phrase title="tyl_video_player_caption_percent_25" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[25%]]></phrase>
+  <phrase title="tyl_video_player_caption_percent_50" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[50%]]></phrase>
+  <phrase title="tyl_video_player_caption_percent_75" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[75%]]></phrase>
+  <phrase title="tyl_video_player_caption_percent_100" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[100%]]></phrase>
+  <phrase title="tyl_video_player_caption_percent_125" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[125%]]></phrase>
+  <phrase title="tyl_video_player_caption_percent_150" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[150%]]></phrase>
+  <phrase title="tyl_video_player_caption_percent_200" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[200%]]></phrase>
+  <phrase title="tyl_video_player_youtube_playlist" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[YouTube playlist]]></phrase>
+  <phrase title="tyl_video_player_previous_video" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Previous video]]></phrase>
+  <phrase title="tyl_video_player_next_video" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Next video]]></phrase>
+  <phrase title="tyl_video_player_open_playlist" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Open playlist on YouTube]]></phrase>
+  <phrase title="tyl_video_player_chapter" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Chapter]]></phrase>
+  <phrase title="tyl_video_player_playlist_item" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Playlist item {number}]]></phrase>
+  <phrase title="tyl_video_player_playback_error" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[Unable to play this media. For a playlist, try Previous or Next.]]></phrase>
+</phrases>

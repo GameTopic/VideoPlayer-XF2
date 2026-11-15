@@ -1,0 +1,10 @@
+{
+    "additional_files": [
+        "js/TylerAustin/VideoPlayer/player.js",
+        "js/TylerAustin/VideoPlayer/player.min.js",
+        "js/TylerAustin/VideoPlayer/videojs10-skin.js",
+        "js/TylerAustin/VideoPlayer/videojs10-skin.min.js",
+        "js/TylerAustin/VideoPlayer/vendor",
+        "src/addons/TylerAustin/VideoPlayer/build.json"
+    ]
+}

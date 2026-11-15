@@ -1,0 +1,228 @@
+# Changelog
+
+## 1.0.0 Dev 4
+
+- Kept Vidstack HLS caption cues attached to their original owned track across synchronous quality/group or source changes.
+- Stopped stale Vidstack YouTube notifications and seek timers from overriding newer source or seek requests.
+- Prevented stale Vidstack HLS errors from recovering, pausing or reporting errors against a newer source after synchronous source changes.
+- Fixed HLS chapter/metadata tracks with quoted or repeated labels by retaining the correct authored track during reload.
+- Rebuilt current Video.js HLS subtitle tracks after media-error recovery and retained pending caption-language choices when temporarily unavailable, while preserving Captions Off and authored chapter tracks.
+- Bound delayed native fallback Play requests to the source the visitor actually started, so changing sources during player loading does not autoplay the replacement source.
+- Cancelled obsolete Video Ads setup after synchronous XenForo request or provider pause notifications, preserving newer Pause/source changes and avoiding stale disabled controls.
+- Updated the settings description to cover all selectable player libraries.
+- Restored the actual focused Video.js control after a Video Ads pre-roll, including controls inside the player's shadow tree.
+- Returned keyboard focus to Settings when caption styling or chapter submenus become unavailable after a track/source change.
+- Preserved authored YouTube iframe permissions and fullscreen attributes, retaining native embeds with explicit isolation policies or inline documents.
+- Preserved newer native sources, tracks and metadata changed during the first player-library import instead of replacing them with an obsolete prepared source.
+- Clarified complete source-folder updates, native same-version rebuilds and JavaScript cache refreshes for already installed Dev 4 forums.
+- Kept initial playback restoration from overriding a newer Pause, pause-others request or source change while the selected player connects.
+- Prevented a finished Video Ads pre-roll from resuming content after a newer Pause, pause-others request or source change during control/focus restoration.
+- Kept explicit YouTube Captions Off choices across playlist items even when a previously selected caption language is unavailable on the current item.
+- Stopped obsolete initial HLS callbacks from publishing metadata, track menus or playback readiness after a source change.
+- Cancelled Video Ads sessions and unused ad eligibility tied to previous content when a Video.js HLS source changes, including changes before the first play request.
+- Stopped stale HLS quality and audio menu updates after nested source or rendition changes, preserving automatic quality selection.
+- Retired obsolete Vidstack HLS caption channels on same-URL manifest reloads while retaining the selected caption when it remains available.
+- Honored explicit Captions Off choices during pending HLS caption restoration in both players, including when tracks already report Off, without changing chapter selection.
+- Preserved Video.js HLS caption selection across subtitle rendition-group updates, matching subtitle language and label instead of reused group-local IDs while retaining Captions Off, separate caption channels and authored VTT tracks.
+- Reconciled Vidstack HLS subtitle groups without stale labels, cues or menu entries, retained Captions Off during delayed default selection, and cleared empty subtitle groups in both custom players without removing authored caption or chapter tracks.
+- Refreshed Vidstack HLS audio language menus when quality changes select another audio group, retaining the engine's audio selection without feeding temporary list indices back into playback.
+- Restored keyboard access to inactive AdminCP option tabs through XenForo's native Tab and Enter handling.
+- Clarified that the audio/video replacement switches also cover attachment and Media Gallery lightboxes.
+- Fixed YouTube error 153 caused by suppressed referrers in Vidstack and Video.js 10 video and playlist embeds by setting an origin-only cross-origin referrer policy before loading their frames.
+- Extended thread/post audio and video coverage to authorized attachment preview links and non-full-size attachment lightboxes, preserving native URLs, viewing permissions, grouping and replacement switches.
+- Enhanced the native lightbox media node inside its owned content container, retaining caption/chapter tracks, audio presentation, Video Ads context and pause/close cleanup.
+- Kept images, ordinary downloads and disabled/default-player attachment links on their native paths.
+
+## 1.0.0 Dev 3
+
+- Added optional Video Ads integration with isolated VAST pre-roll playback, translatable ad controls, fullscreen placement, pause-others coordination and disposal, preserving content HLS, captions and chapter controls.
+- Preserved the native attachment video tag prefix and independent initialization handlers so Video Ads and Video Player template modifications can both apply.
+- Expanded Media Gallery replacement to audio, video and lightboxes, including media opened from albums, retaining native URLs, posters and access checks.
+- Paused hidden lightbox players and their ads on slide changes and disposed them on close.
+- Preserved native content-type context for direct-media BB codes in posts and Resource Manager descriptions/updates, alongside shared attachment and YouTube support.
+
+## 1.0.0 Dev 2
+
+- Added optional Media Gallery video-page replacement using its native authorized playback markup, preserving video URLs and posters without overwriting other element-handler attributes.
+- Discovered rendered YouTube video and playlist iframes in custom movie templates and dynamically loaded XenForo content, honoring the YouTube replacement switch and retaining consent placeholders.
+- Added responsive wrappers for bare YouTube movie-list embeds and used XenForo's native handler registration to prevent duplicate initialization.
+
+## 1.0.0 Dev 1
+
+- Kept Video.js caption styling and chapter menus available through native menu updates, publishing their track availability instead of competing with the menu's hidden-state handling.
+- Enabled companion WebVTT chapter tracks in Vidstack's detached media copy so its native chapter loader can select them without changing caption selection or the original fallback.
+- Cancelled delayed Vidstack taps and gesture animations when controls are disabled, removed or reconnected, or the source changes, preventing stale gestures from acting on newer media.
+- Hid playlist navigation after switching to a non-playlist source in Vidstack and Video.js, preventing the bar's flex layout from overriding its hidden state.
+- Expanded every playlist-item number placeholder in translated Video.js metadata labels, matching playlist announcements.
+- Accepted the next Video.js surface click after a mouse release outside the player, clearing the abandoned gesture without disrupting normal double-clicks.
+- Kept destroyed Video.js player elements from restarting their stores or attaching media when old content is reinserted, and cancelled queued connection work during teardown.
+- Reused native Video.js selector subscriptions across reconnects and retargeted them when the player context changes, preventing duplicate subscriptions and stale caption, chapter and control state.
+- Released Video.js time and volume slider controllers on disconnect, preventing duplicate resize observers and delayed drag callbacks when forum content moves and reconnects.
+- Kept native XenForo YouTube embeds responsive in Vidstack by excluding iframe sizing attributes from its detached player target, retaining the original iframe for fallback.
+- Removed the forum wrapper's CSS :has() sizing dependency by marking enhanced wrappers, following synchronous player moves and releasing the marker when their last player is disposed, including audio wrappers.
+- Retained the original media when inline styles change during asynchronous preparation so removed or replaced sizing rules are not restored from an older copy.
+- Excluded XenForo attachment fallback-message elements from Vidstack's detached media copy so they do not overlay playable media, preserving them on the original native element.
+- Recognized external Video.js HLS captions without track IDs and kept authored VTT selection separate from manifest renditions, including tracks with matching languages and labels.
+- Applied existing caption selection when the Video.js HLS track adapter initializes and kept parsed HLS cues limited to HLS-owned tracks.
+- Disabled the active Video.js HLS subtitle rendition when its displayed track is switched Off, preserving Off across subsequent track announcements without interfering with startup defaults or recovery.
+- Stopped Vidstack YouTube state callbacks after waiting/play listeners pause, remove or replace the provider, preserving newer playback intent.
+- Prevented Vidstack end-of-playback callbacks from overwriting replay, seeking, source changes or disposal performed by their listeners.
+- Kept ignored Vidstack Play calls from cancelling a legitimate pending end transition.
+- Resumed Video.js HLS loading suspended for AirPlay when returning to local playback, retaining the reported position and the current source's preload policy without clearing terminal errors.
+- Kept local Video.js HLS preload and playback loading idle while an AirPlay receiver is active.
+- Ignored late Vidstack HLS library callbacks after provider disposal and stopped engine setup when instance callbacks dispose the provider.
+- Registered asynchronous Vidstack HLS listeners and effects in the provider's native cleanup scope for source changes and removal.
+- Stopped older YouTube polling updates after a listener switches sources, reloads the player, removes it or requests a newer seek, including volume and speed notifications.
+- Kept only the latest queued YouTube seek and checked its source again after seeking callbacks before issuing the SDK command.
+- Cancelled obsolete Video.js HLS loading commands and early Play/seek actions when loading callbacks replace the source, reload it or remove the media.
+- Retained the original media when caption or chapter track labels or identifiers change during asynchronous player preparation.
+- Started a fresh Video.js YouTube load for explicit retries after SDK startup failures, clearing stale errors without resetting caption preferences or player controls.
+- Reported YouTube SDK constructor failures through the native dismissible error path and settled pending playback/seeking work.
+- Stopped obsolete YouTube SDK creation when a load-start listener replaces or disposes its iframe.
+- Kept failed YouTube load completion bound to that operation when an error listener switches media sources.
+- Established new YouTube source/load ownership before cancellation callbacks and stopped obsolete loading, iframe recreation and error work after listeners select another source.
+- Preserved the requested initial playlist item and start time across recoverable SDK startup failures.
+- Requested metadata for explicit early Video.js seeks, including chapters, so preload=none HLS and YouTube providers can initialize without autoplay.
+- Retained pending early YouTube seeks across its same-source SDK initialization while cancelling them for an actual source change.
+- Cancelled pending Video.js seeks on media errors and ignored invalid seek times before requesting metadata.
+- Prevented superseded seeks from assigning an old playback time after metadata or synchronous state notifications change the source.
+- Kept shared YouTube poster lookups alive for remaining players when one consumer is removed or changes source, canceling image work when the last consumer leaves.
+- Validated YouTube poster candidates through image load/error results instead of accepting opaque no-cors response statuses, restoring format/size fallbacks.
+- Removed the YouTube poster lookup's connect-src requirement while retaining native URL generation, completed-result caching and in-flight request coalescing.
+- Waited for confirmed YouTube playback before resolving Video.js play requests, retaining autoplay-block/error/pause cancellation.
+- Guarded YouTube state callbacks against source changes and pauses made by synchronous event listeners.
+- Propagated XenForo asset-version tokens through dynamic runtime and skin imports, keeping their Video.js module identity aligned after upgrades.
+- Loaded the Vidstack stylesheet through XenForo's versioned JavaScript asset URL helper, including configured asset/CDN paths.
+- Forwarded authored credentialed CORS settings through Vidstack's HLS XHR/fetch hooks, retaining existing hook behavior and subtitle requests.
+- Used the native normalized media CORS setting for Vidstack caption/chapter and poster requests.
+- Reused existing page CSP nonces for Video.js generated global/shadow styles and its YouTube SDK loader.
+- Copied media sizing with individual CSS properties instead of cssText to support style-src-attr restrictions and retain player-owned styles.
+- Settled blocked Vidstack YouTube poster requests without an unhandled rejection or permanently pending lookup.
+- Added the forum origin to Vidstack single-video embeds and preserved original iframe referrer policies in both custom players.
+- Documented CSP resource origins, HLS worker fallback, module CDN/CORS requirements and caption/chapter credentials without modifying site security headers.
+- Retained original attachment players and YouTube playlist iframes when required browser capabilities are missing, checking before imports or iframe suspension.
+- Kept native playback when neither the selected HLS engine nor the browser supports HLS, preserving the original track elements.
+- Aligned Video.js HLS MIME aliases with Vidstack so extensionless video/mpegurl and video/x-mpegurl streams use its HLS adapter and MSE engine.
+- Preserved native popover and stylesheet fallbacks, caption appearance controls and chapter menus on supported browsers.
+- Deferred initial Video.js HLS engine and YouTube SDK creation for preload=none until playback or another explicit loading action needs them.
+- Kept early chapter seeks, HLS AirPlay preparation, autoplay/preload changes and restoration of started media able to initialize their provider.
+- Cancelled superseded queued HLS initialization to avoid loading the same manifest again immediately after the first Play request.
+- Limited full YouTube SDK polling work while idle to a 250 ms cadence, retaining the native 50 ms polling path for playback and seeking.
+- Applied pre-ready YouTube volume, mute and speed preferences from their current values instead of accumulating delayed preference commands.
+- Loaded the Video.js runtime and skin concurrently through native ESM dependency ordering.
+- Added preload=none to enhanced attachment markup and suspended the original YouTube iframe during custom setup, restoring it if setup fails.
+- Kept generated YouTube fallback labels from overriding provider titles or playlist-item metadata.
+- Routed authored Video.js poster images through native player metadata and preserved their cross-origin setting.
+- Created a Vidstack poster component for video even when its image is inferred later, and ignored superseded poster-load results.
+- Corrected Vidstack cached/broken poster loading states and kept image errors separate from playback errors.
+- Allowed Vidstack YouTube provider titles to replace an empty title, while preserving authored titles and ARIA labels.
+- Updated Video.js YouTube playlist item metadata without overriding authored title changes.
+- Kept Video.js readiness in sync with metadata, buffering, playing and error events; cancelled its delayed buffering indicator on disconnect.
+- Cleared Vidstack's busy state on either can-play path and included poster/title changes in asynchronous setup guards.
+- Preserved live attachment playback speed and caption selection during replacement and retained browser playback-rate defaults across later loads.
+- Kept the original media when its sources or tracks change during asynchronous custom-player setup.
+- Guarded Vidstack readiness restoration against source/provider changes, retained quality-switch preferences and respected pauses made while restoration was pending.
+- Reloaded Vidstack YouTube playlists when their list/start changes without changing the embedded video ID.
+- Cancelled Video.js YouTube play requests and queued seeks belonging to an older source, while restoring position, playlist index and paused state during same-source SDK recreation.
+- Retained YouTube caption-language/Off preferences and refreshed available tracks through the native adapter, including after SDK recreation.
+- Rebound playlist events without retaining old SDK callbacks, cancelled obsolete initial positioning, and refreshed playlist links/navigation visibility on source changes.
+- Removed only Vidstack HLS-owned tracks on a new manifest or provider teardown, keeping external captions and chapter tracks intact.
+- Preserved authored loop attributes when Video.js recreates HLS, YouTube and captioned-audio media.
+- Cancelled deferred Vidstack end and loop work on newer playback, seeking, source changes and removal; explicit pauses cancel pending loop restarts.
+- Used YouTube's playlist looping control in both engines so looping repeats the queue without replaying each item before it can advance.
+- Finalized Video.js YouTube ended/seeking state before notifications and prevented its loop callbacks from overriding newer pause, replay or source changes.
+- Retained caption selection, caption appearance and chapter tracks during replay and looping.
+- Used Vidstack's absolute seekable endpoint when finalizing HLS playback and completing pending seeks, preserving caption and chapter timing.
+- Cleared ended state after seeking backward in YouTube and after sub-second seeks away from the endpoint in Vidstack.
+- Coordinated multiple custom players at play-request time, including requests still waiting for media readiness and dynamically inserted audio players.
+- Kept cancelled HTML media play events and late YouTube playing/buffering callbacks from reclaiming playback after another player pauses them.
+- Applied pause-others to YouTube playlist navigation and allowed a fresh Play or Previous/Next request to resume an interrupted playlist.
+- Retained each paused player's caption selection, caption styling, chapter menu and playback position; disabling pause-others keeps playback independent.
+- Released add-on listeners, HLS/YouTube callbacks and media resources when a player is permanently removed or initialization fails.
+- Cancelled pending Vidstack YouTube messages, seek announcements and slider work during teardown.
+- Paused hidden XenForo overlays without destroying caption preferences or chapter menus, and prevented delayed playlist alignment from restarting hidden playback.
+- Preserved native initialization for dynamically inserted XenForo content and guarded delayed menu focus restoration across reconnects.
+- Added title-based Video.js player names and retained explicit media ARIA labels in both custom players.
+- Made Vidstack status announcements use live-region text, including seek-from-zero and playback-speed announcements, and corrected lazy-loading busy states.
+- Added interaction-gated YouTube playlist announcements and Vidstack playback-error alerts without moving focus.
+- Named caption-style and chapter menus, added spoken chapter start times, and preserved menu focus across track refreshes.
+- Described Video.js HLS seek-slider positions relative to the available DVR window for screen readers.
+- Excluded the presentation-only Video.js YouTube iframe from the accessibility tree and added visible focus outlines to playlist buttons.
+- Ignored swipes, pinches, cancelled touches, and mismatched double-tap regions in video gestures.
+- Kept touch sliders bound to their initiating finger and released cancelled Vidstack and Video.js drags at the last preview position.
+- Preserved vertical page scrolling until a Vidstack horizontal swipe is established.
+- Reserved space for playlist navigation above the native controls, with larger touch targets, horizontal overflow and safe-area spacing.
+- Wrapped long chapter titles in the Video.js chapter menu while retaining caption styling and chapter controls.
+- Allowed Video.js YouTube embeds to fit narrow post columns while retaining vertical space for the embedded player.
+- Fixed YouTube rebuffering indicators and stale error states during playlist recovery.
+- Handled Vidstack YouTube item errors and enabled playlist navigation when an initial item fails before readiness.
+- Cleared buffering indicators on terminal errors and bounded Vidstack HLS decode recovery to one attempt per source load.
+- Paused terminal HLS failures to release pending play requests without removing caption or chapter tracks.
+- Preserved external caption/chapter cues and in-band caption selection through Video.js HLS media recovery.
+- Reused Vidstack HLS caption tracks during recovery to retain selection and prevent duplicate menu entries.
+- Kept seeking, progress/buffer fills, and percentage shortcuts within moving HLS DVR windows in both libraries.
+- Preserved chapter-marker geometry and live-window time labels as seekable bounds move.
+- Fixed Video.js no-op seeks leaving the progress bar in a seeking state, and clamped seeks to available ranges.
+- Cleared stale YouTube seek/progress state when playlist items change and bounded Video.js seek settlement to the provider's actual position.
+- Fixed Vidstack YouTube seek command cleanup and completion at buffered boundaries.
+- Preserved the native media position when replacing attachment and HLS players.
+- Preserved native attachment volume, current mute state, and muted defaults during player replacement, including HLS media slots.
+- Fixed Vidstack YouTube zero-volume commands and removed unresolved mute/volume command promises.
+- Cancelled queued play requests on pause during media loading and prevented delayed YouTube playback after pause or removal.
+- Returned both YouTube players to a recoverable paused state when the browser blocks scripted playback, including playlists.
+- Preserved already-playing attachment playback during enhancement and included pending playback in the pause-other-players option.
+- Fixed Vidstack's volume slider failing to unmute when returning to the previous positive volume.
+- Synchronized Video.js YouTube volume and mute displays with actual provider state, including playlist changes.
+- Removed the zero-speed position from Vidstack's playback speed slider.
+- Refreshed Vidstack HLS quality choices when renditions are removed or reindexed, retaining the engine's Auto/manual mode.
+- Updated Video.js YouTube speed controls from confirmed playback rates, including playlist resets and changes without a rate-change event.
+- Stopped Vidstack YouTube speed commands from retaining unresolved play/pause-style promises.
+- Fixed Vidstack fullscreen requests being delayed until playback, preserving user activation for play-on-demand media.
+- Kept Video.js YouTube video and playlist keyboard focus in the custom player, preventing iframe shortcuts from bypassing its fullscreen controls.
+- Enforced audio/source PiP restrictions for keyboard shortcuts in both libraries, including Safari's presentation API.
+- Documented focused-player shortcuts, keyboard playlist navigation, and native fullscreen limitations.
+- Fixed Vidstack HLS caption routing for separate closed-caption channels and subtitle cues arriving after a language switch.
+- Preserved the active YouTube caption selection during Video.js playlist-menu refreshes and synchronized selection-only changes.
+- Added the native Video.js remote-playback feature and an availability-aware AirPlay button to compact audio playback.
+- Restored Vidstack HLS remote-playback availability after hls.js MediaSource attachment while retaining the original manifest URL for AirPlay.
+- Preserved poster, cross-origin, remote-playback, and PiP attributes when recreating media elements.
+- Disabled Video.js PiP controls for audio presentations and respected explicit source restrictions on PiP and AirPlay.
+- Retained caption styling, chapter menus, and fullscreen playlist controls.
+- Fixed Vidstack source selection for media using a direct src attribute, retaining the media element's source priority.
+- Preserved HLS MIME metadata when handing sources to Video.js 10.
+- Added HLS audio links to the audio BB code and kept the Video.js caption/chapter menus available for tracks discovered in HLS manifests.
+- Accepted uppercase media and WebVTT filename extensions through XenForo's native file-extension accessor without rewriting source URLs.
+- Fixed direct-audio BB codes requesting an unloaded custom initializer in XenForo-default or disabled mode.
+- Aligned player assets and attachment, direct-media, and YouTube initialization with the supported library choices; unrecognized choices retain native playback.
+- Restored XenForo's native video initialization when a custom enhancement cannot complete, preserving the source and text tracks.
+- Clarified that changing the library requires a full reload of open forum pages.
+- Fixed Vidstack playlist continuation so an explicit pause cancels automatic continuation, and concurrent play requests share the native pending request.
+- Fixed Video.js playlist start positioning to respect active playback and manual Previous/Next choices when metadata arrives late.
+- Refreshed Video.js YouTube caption choices when playlist videos change, preventing languages from earlier videos remaining in the caption menu.
+- Retained caption styling, chapter menus, and fullscreen playlist controls.
+- Added YouTube playlist replacement in Vidstack and Video.js 10, including Previous/Next controls and a link to the original playlist.
+- Preserved native YouTube consent, playlist context, the initial video, and stored start times.
+
+- Added Vidstack recognition of XenForo MOV/WAV MIME types for protected attachment URLs without file extensions.
+- Clarified automatic replacement of existing and new attachment and YouTube video and playlist players with the selected library.
+- Added Video.js 10 caption appearance controls for font family, size, foreground/background colors and opacity, and text edge, with a preview and reset action.
+- Added a Video.js 10 chapter menu with safe text labels, timestamps, current-chapter indication, and seek-on-selection.
+- Retained the existing Vidstack menus and added fullscreen access to the new controls through a customized Video.js skin.
+- Kept HLS WebVTT captions styleable through the media component's native-video slot.
+
+- Added a Player library selector for Video.js 10, XenForo default playback, and Vidstack, keeping the existing Vidstack default.
+- Added locally bundled Video.js 10.3.0 with audio/video skins, HLS and YouTube components, language packs, supported AirPlay/PiP, native captions, and timeline chapter markers.
+- Kept each custom library isolated to the selected mode and preserved XenForo's native YouTube consent behavior.
+- Documented differences between the libraries and retained the existing Vidstack keyboard and seek preferences.
+
+- Added Vidstack replacement for full-size XenForo audio/video attachments and YouTube video and playlist embeds.
+- Preserved attachment access checks, native YouTube start times, cookie-consent prompts, and YouTube playlist context.
+- Added direct-media BB codes with WebVTT captions, subtitles, and chapters.
+- Added supported AirPlay, PiP, fullscreen, speed, volume, keyboard, HLS, and live-stream controls.
+- Added playback preferences, translated control labels, and branding settings.
+- Bundled Vidstack 1.15.7, its runtime dependencies, and third-party license notices.
+- Added installation, direct-media authoring, browser requirements, external-service, and licensing documentation.
+
+## Important Note
+
+This is a development release. Take a backup before installation and use a staging forum before production deployment.

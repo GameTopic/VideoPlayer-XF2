@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="tylVideoPlayer_enabled" edit_format="onoff" data_type="boolean" advanced="0"><default_value><![CDATA[1]]></default_value><edit_format_params><![CDATA[]]></edit_format_params><sub_options></sub_options><relation group_id="tylVideoPlayer" display_order="10" /></option>
+  <option option_id="tylVideoPlayer_engine" edit_format="select" data_type="string" advanced="0">
+    <default_value>vidstack</default_value>
+    <edit_format_params><![CDATA[videojs10={{ phrase('tyl_video_player_engine_videojs10') }}
+xf={{ phrase('tyl_video_player_engine_xf') }}
+vidstack={{ phrase('tyl_video_player_engine_vidstack') }}]]></edit_format_params>
+    <relation group_id="tylVideoPlayer" display_order="15" />
+  </option>
+  <option option_id="tylVideoPlayer_video" edit_format="onoff" data_type="boolean" advanced="0"><default_value><![CDATA[1]]></default_value><edit_format_params><![CDATA[]]></edit_format_params><sub_options></sub_options><relation group_id="tylVideoPlayer" display_order="20" /></option>
+  <option option_id="tylVideoPlayer_audio" edit_format="onoff" data_type="boolean" advanced="0"><default_value><![CDATA[1]]></default_value><edit_format_params><![CDATA[]]></edit_format_params><sub_options></sub_options><relation group_id="tylVideoPlayer" display_order="30" /></option>
+  <option option_id="tylVideoPlayer_youtube" edit_format="onoff" data_type="boolean" advanced="0"><default_value><![CDATA[1]]></default_value><edit_format_params><![CDATA[]]></edit_format_params><sub_options></sub_options><relation group_id="tylVideoPlayer" display_order="40" /></option>
+  <option option_id="tylVideoPlayer_pauseOthers" edit_format="onoff" data_type="boolean" advanced="0"><default_value><![CDATA[1]]></default_value><edit_format_params><![CDATA[]]></edit_format_params><sub_options></sub_options><relation group_id="tylVideoPlayer" display_order="50" /></option>
+  <option option_id="tylVideoPlayer_keyboard" edit_format="onoff" data_type="boolean" advanced="0"><default_value><![CDATA[1]]></default_value><edit_format_params><![CDATA[]]></edit_format_params><sub_options></sub_options><relation group_id="tylVideoPlayer" display_order="60" /></option>
+  <option option_id="tylVideoPlayer_seekStep" edit_format="spinbox" data_type="unsigned_integer" advanced="0"><default_value><![CDATA[10]]></default_value><edit_format_params><![CDATA[min=1
+max=60
+step=1]]></edit_format_params><sub_options></sub_options><relation group_id="tylVideoPlayer" display_order="70" /></option>
+  <option option_id="tyl_video_player_remove_branding" edit_format="onoff" data_type="boolean" advanced="0"><default_value>0</default_value>
+    <relation group_id="tylVideoPlayer" display_order="1000"/>
+  </option>
+</options>

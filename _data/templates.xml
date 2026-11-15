@@ -1,0 +1,879 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="public" title="tyl_video_player_assets" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[<xf:if is="$xf.options.tylVideoPlayer_enabled && ($xf.options.tylVideoPlayer_engine == 'vidstack' || $xf.options.tylVideoPlayer_engine == 'videojs10')">
+<xf:if is="$xf.options.tylVideoPlayer_engine == 'vidstack'">
+<link rel="stylesheet" href="{{ js_url('TylerAustin/VideoPlayer/vendor/vidstack/player.css') }}" />
+</xf:if>
+<xf:css src="tyl_video_player.less" />
+<xf:js src="TylerAustin/VideoPlayer/player.js" min="1" />
+</xf:if>]]></template>
+  <template type="public" title="tyl_video_player_config" version_id="1000003" version_string="1.0.0 Dev 4"><![CDATA[<xf:if is="$xf.options.tylVideoPlayer_enabled && ($xf.options.tylVideoPlayer_engine == 'vidstack' || $xf.options.tylVideoPlayer_engine == 'videojs10')"><div class="u-hidden js-tylVideoPlayerConfig" data-engine="{$xf.options.tylVideoPlayer_engine}" data-translations="{{ {'Announcements': phrase('tyl_video_player_announcements'),'Accessibility': phrase('tyl_video_player_accessibility'),'AirPlay': phrase('tyl_video_player_airplay'),'Audio': phrase('tyl_video_player_audio'),'Auto': phrase('tyl_video_player_auto'),'Boost': phrase('tyl_video_player_boost'),'Captions': phrase('tyl_video_player_captions'),'Caption Styles': phrase('tyl_video_player_caption_styles'),'Captions look like this': phrase('tyl_video_player_captions_look_like_this'),'Chapters': phrase('tyl_video_player_chapters'),'Closed-Captions Off': phrase('tyl_video_player_closed_captions_off'),'Closed-Captions On': phrase('tyl_video_player_closed_captions_on'),'Connected': phrase('tyl_video_player_connected'),'Continue': phrase('tyl_video_player_continue'),'Connecting': phrase('tyl_video_player_connecting'),'Default': phrase('tyl_video_player_default'),'Disabled': phrase('tyl_video_player_disabled'),'Disconnected': phrase('tyl_video_player_disconnected'),'Display Background': phrase('tyl_video_player_display_background'),'Download': phrase('tyl_video_player_download'),'Enter Fullscreen': phrase('tyl_video_player_enter_fullscreen'),'Enter PiP': phrase('tyl_video_player_enter_pip'),'Exit Fullscreen': phrase('tyl_video_player_exit_fullscreen'),'Exit PiP': phrase('tyl_video_player_exit_pip'),'Font': phrase('tyl_video_player_font'),'Family': phrase('tyl_video_player_family'),'Fullscreen': phrase('tyl_video_player_fullscreen'),'Google Cast': phrase('tyl_video_player_google_cast'),'Keyboard Animations': phrase('tyl_video_player_keyboard_animations'),'LIVE': phrase('tyl_video_player_live'),'Loop': phrase('tyl_video_player_loop'),'Mute': phrase('tyl_video_player_mute'),'Normal': phrase('tyl_video_player_normal'),'Off': phrase('tyl_video_player_off'),'Pause': phrase('tyl_video_player_pause'),'Play': phrase('tyl_video_player_play'),'Playback': phrase('tyl_video_player_playback'),'Playback Error': phrase('tyl_video_player_playback_error'),'PiP': phrase('tyl_video_player_pip'),'Quality': phrase('tyl_video_player_quality'),'Replay': phrase('tyl_video_player_replay'),'Reset': phrase('tyl_video_player_reset'),'Seek Backward': phrase('tyl_video_player_seek_backward'),'Seek Forward': phrase('tyl_video_player_seek_forward'),'Seek': phrase('tyl_video_player_seek'),'Settings': phrase('tyl_video_player_settings'),'Skip To Live': phrase('tyl_video_player_skip_to_live'),'Speed': phrase('tyl_video_player_speed'),'Size': phrase('tyl_video_player_size'),'Color': phrase('tyl_video_player_color'),'Opacity': phrase('tyl_video_player_opacity'),'Shadow': phrase('tyl_video_player_shadow'),'Text': phrase('tyl_video_player_text'),'Text Background': phrase('tyl_video_player_text_background'),'Track': phrase('tyl_video_player_track'),'Unmute': phrase('tyl_video_player_unmute'),'Volume': phrase('tyl_video_player_volume')}|json }}" data-pause-others="{$xf.options.tylVideoPlayer_pauseOthers}" data-audio="{$xf.options.tylVideoPlayer_audio}" data-video="{$xf.options.tylVideoPlayer_video}" data-youtube="{$xf.options.tylVideoPlayer_youtube}" data-keyboard="{$xf.options.tylVideoPlayer_keyboard}" data-seek-step="{$xf.options.tylVideoPlayer_seekStep}"></div><xf:include template="tyl_video_player_youtube_playlist" /><xf:if is="$xf.options.tylVideoPlayer_engine == 'videojs10'"><xf:include template="tyl_video_player_videojs10_skin" /></xf:if></xf:if>]]></template>
+  <template type="public" title="tyl_video_player_media" version_id="1000002" version_string="1.0.0 Dev 3"><![CDATA[<div class="bbMediaWrapper bbMediaWrapper--inline tylVideoPlayerWrapper">
+<div class="bbMediaWrapper-inner {{ $audio ? 'bbMediaWrapper-inner--audio' : '' }}">
+<xf:if is="$audio">
+<audio controls preload="none" title="{{ phrase('tyl_video_player_audio')|for_attr }}" data-xf-init="{{ ($xf.options.tylVideoPlayer_enabled && ($xf.options.tylVideoPlayer_engine == 'vidstack' || $xf.options.tylVideoPlayer_engine == 'videojs10')) ? 'tyl-video-player' : '' }}" data-media-type="audio" crossorigin="anonymous">
+<source src="{$source}" type="{$type}" />
+<xf:foreach loop="$tracks" value="$track"><track kind="{$track.kind}" src="{$track.src}" srclang="{$track.language}" label="{$track.label}" /></xf:foreach>
+{{ phrase('your_browser_is_not_able_to_play_this_audio') }}
+</audio>
+<xf:else />
+<video controls playsinline preload="none" title="{{ phrase('tyl_video_player_playback')|for_attr }}" data-xf-init="{{ ($xf.options.tylVideoPlayer_enabled && ($xf.options.tylVideoPlayer_engine == 'vidstack' || $xf.options.tylVideoPlayer_engine == 'videojs10')) ? 'tyl-video-player' : 'video-init' }}" data-media-type="video" data-ta-video-ad-content-type="{$contentType}" crossorigin="anonymous">
+<source src="{$source}" type="{$type}" />
+<xf:foreach loop="$tracks" value="$track"><track kind="{$track.kind}" src="{$track.src}" srclang="{$track.language}" label="{$track.label}" /></xf:foreach>
+{{ phrase('your_browser_is_not_able_to_display_this_video') }}
+</video>
+</xf:if>
+</div>
+</div>]]></template>
+  <template type="public" title="tyl_video_player_invalid" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[<span class="bbCodeInline">{{ phrase('tyl_video_player_invalid_media') }}</span>]]></template>
+  <template type="public" title="tyl_video_player.less" version_id="1000003" version_string="1.0.0 Dev 4"><![CDATA[.tylVideoPlayer .tylVideoPlayerAd {
+    position: absolute;
+    inset: 0;
+    z-index: 50;
+    background: #000;
+    color: #fff;
+    pointer-events: auto;
+}
+.tylVideoPlayerAd[hidden] {
+    display: none;
+}
+.tylVideoPlayerAd > video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.tylVideoPlayerAd .taVideoAd-overlay {
+    z-index: 1;
+    flex-wrap: wrap;
+}
+.tylVideoPlayerAd .taVideoAd-actions {
+    flex-wrap: wrap;
+}
+.fancybox__content.tylVideoPlayerLightboxContent {
+    width: ~"min(960px, calc(100vw - 48px))";
+    max-width: 100%;
+    padding: 0;
+}
+.tylVideoPlayerLightbox {
+    width: 100%;
+}
+.bbMediaWrapper-inner.tylVideoPlayerInner {
+    padding-bottom: 0;
+    height: auto;
+}
+.tylVideoPlayer .tylVideoPlayerAnnounce,
+media-player.tylVideoPlayer [data-media-announcer] {
+    position: absolute;
+    display: block;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    pointer-events: none;
+}
+.tylVideoPlayerPlaylist > .button:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: -3px;
+}
+.tylVideoPlayerPlaylist {
+    position: absolute;
+    z-index: 20;
+    top: ~"calc(8px + env(safe-area-inset-top, 0px))";
+    right: ~"calc(8px + env(safe-area-inset-right, 0px))";
+    left: ~"calc(8px + env(safe-area-inset-left, 0px))";
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    touch-action: pan-x pinch-zoom;
+    gap: 6px;
+    pointer-events: none;
+}
+.tylVideoPlayerPlaylist[hidden] {
+    display: none;
+}
+.tylVideoPlayerPlaylist > * {
+    flex: 0 0 auto;
+    max-inline-size: 100%;
+    pointer-events: auto;
+}
+media-player.tylVideoPlayer[data-tyl-playlist],
+.tylVideoPlayer--videojs10 tyl-video-skin[data-tyl-playlist] {
+    --tyl-playlist-space: 48px;
+}
+media-player.tylVideoPlayer[data-tyl-playlist] .vds-controls {
+    padding-block-start: ~"calc(var(--tyl-playlist-space) + env(safe-area-inset-top, 0px))";
+}
+.tylVideoPlayer--videojs10 tyl-video-skin[data-tyl-playlist]::part(tyl-secondary-controls) {
+    top: ~"calc(var(--tyl-playlist-space) + env(safe-area-inset-top, 0px))";
+}
+@media (any-pointer: coarse) {
+    .tylVideoPlayerPlaylist > .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-block-size: 44px;
+        min-inline-size: 44px;
+        touch-action: manipulation;
+    }
+    media-player.tylVideoPlayer[data-tyl-playlist],
+    .tylVideoPlayer--videojs10 tyl-video-skin[data-tyl-playlist] {
+        --tyl-playlist-space: 60px;
+        min-block-size: ~"min(240px, 100dvh)";
+    }
+    .tylVideoPlayer--videojs10 tyl-video-skin[data-tyl-playlist]::part(tyl-container) {
+        min-block-size: ~"min(240px, 100dvh)";
+    }
+}
+media-player.tylVideoPlayer[data-tyl-pip-disabled] .vds-pip-button {
+    display: none;
+}
+.tylVideoPlayer--videojs10 video-player {
+    position: relative;
+    display: block;
+}
+.tylVideoPlayer--videojs10 tyl-audio-player {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+.tylVideoPlayerAudioAirPlay {
+    align-self: flex-end;
+    margin-block-start: 4px;
+}
+.tylVideoPlayerAudioAirPlay[hidden] {
+    display: none;
+}
+.bbMediaWrapper-inner > media-player.tylVideoPlayer {
+    position: relative;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
+    --media-brand: @xf-linkColor;
+    font-family: @xf-fontFamilyUi;
+}
+.bbMediaWrapper-inner > media-player.tylVideoPlayer[data-view-type="audio"] {
+    aspect-ratio: auto;
+    min-height: 80px;
+}
+.bbMediaWrapper-inner--audio.tylVideoPlayerInner {
+    height: auto;
+    min-height: 80px;
+}
+.bbMediaWrapper-inner > .tylVideoPlayer--videojs10 {
+    position: relative;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    --media-accent-color: @xf-linkColor;
+    --media-font-family: @xf-fontFamilyUi;
+}
+.tylVideoPlayer--videojs10 media-i18n {
+    display: contents;
+}
+.tylVideoPlayer--videojs10 youtube-video {
+    min-inline-size: 0;
+    min-block-size: 0;
+}
+.tylVideoPlayer--videojs10 tyl-video-skin:has(> youtube-video),
+.tylVideoPlayer--videojs10 tyl-video-skin:has(> youtube-video)::part(tyl-container) {
+    min-block-size: ~"min(200px, 100dvh)";
+}
+.tylVideoPlayer--videojs10 video-skin,
+.tylVideoPlayer--videojs10 tyl-video-skin {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+}
+.tylVideoPlayer--videojs10 audio-skin {
+    display: block;
+    width: 100%;
+    min-height: 80px;
+}
+.tylVideoPlayer--videojs10 video,
+.tylVideoPlayer--videojs10 youtube-video,
+.tylVideoPlayer--videojs10 hlsjs-video {
+    width: 100%;
+    height: 100%;
+}
+media-player.tylVideoPlayer:fullscreen {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+}
+
+.tylVideoPlayer--videojs10 tyl-video-skin::part(tyl-chapter-label) {
+    flex: 1 1 auto;
+    min-inline-size: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+.tylVideoPlayer--videojs10 tyl-video-skin::part(tyl-caption-preview) {
+    display: block;
+    margin: 8px;
+    padding: 8px;
+    color: white;
+    background-color: black;
+    text-align: center;
+    font-size: 1.2em;
+}
+.tylVideoPlayer--videojs10 tyl-video-skin::part(tyl-chapter-time) {
+    min-width: 4em;
+    margin-inline-end: 12px;
+    font-variant-numeric: tabular-nums;
+}
+.tylVideoPlayer--videojs10[data-caption-font="sans"] video::cue,
+.tylVideoPlayer--videojs10[data-caption-font="sans"] tyl-video-skin::part(tyl-caption-preview) {
+    font-family: sans-serif;
+    font-variant: normal;
+}
+.tylVideoPlayer--videojs10[data-caption-font="serif"] video::cue,
+.tylVideoPlayer--videojs10[data-caption-font="serif"] tyl-video-skin::part(tyl-caption-preview) {
+    font-family: serif;
+    font-variant: normal;
+}
+.tylVideoPlayer--videojs10[data-caption-font="monospace"] video::cue,
+.tylVideoPlayer--videojs10[data-caption-font="monospace"] tyl-video-skin::part(tyl-caption-preview) {
+    font-family: monospace;
+    font-variant: normal;
+}
+.tylVideoPlayer--videojs10[data-caption-font="cursive"] video::cue,
+.tylVideoPlayer--videojs10[data-caption-font="cursive"] tyl-video-skin::part(tyl-caption-preview) {
+    font-family: cursive;
+    font-variant: normal;
+}
+.tylVideoPlayer--videojs10[data-caption-font="smallcaps"] video::cue,
+.tylVideoPlayer--videojs10[data-caption-font="smallcaps"] tyl-video-skin::part(tyl-caption-preview) {
+    font-family: sans-serif;
+    font-variant: small-caps;
+}
+.tylVideoPlayer--videojs10[data-caption-size="75"] video::cue,
+.tylVideoPlayer--videojs10[data-caption-size="75"] tyl-video-skin::part(tyl-caption-preview) {
+    font-size: 75%;
+}
+.tylVideoPlayer--videojs10[data-caption-size="100"] video::cue,
+.tylVideoPlayer--videojs10[data-caption-size="100"] tyl-video-skin::part(tyl-caption-preview) {
+    font-size: 100%;
+}
+.tylVideoPlayer--videojs10[data-caption-size="125"] video::cue,
+.tylVideoPlayer--videojs10[data-caption-size="125"] tyl-video-skin::part(tyl-caption-preview) {
+    font-size: 125%;
+}
+.tylVideoPlayer--videojs10[data-caption-size="150"] video::cue,
+.tylVideoPlayer--videojs10[data-caption-size="150"] tyl-video-skin::part(tyl-caption-preview) {
+    font-size: 150%;
+}
+.tylVideoPlayer--videojs10[data-caption-size="200"] video::cue,
+.tylVideoPlayer--videojs10[data-caption-size="200"] tyl-video-skin::part(tyl-caption-preview) {
+    font-size: 200%;
+}
+.tylVideoPlayer--videojs10[data-caption-text-color="white"] {
+    --tyl-caption-text-rgb: 255, 255, 255;
+}
+.tylVideoPlayer--videojs10[data-caption-text-color="black"] {
+    --tyl-caption-text-rgb: 0, 0, 0;
+}
+.tylVideoPlayer--videojs10[data-caption-text-color="red"] {
+    --tyl-caption-text-rgb: 255, 0, 0;
+}
+.tylVideoPlayer--videojs10[data-caption-text-color="green"] {
+    --tyl-caption-text-rgb: 0, 255, 0;
+}
+.tylVideoPlayer--videojs10[data-caption-text-color="blue"] {
+    --tyl-caption-text-rgb: 0, 0, 255;
+}
+.tylVideoPlayer--videojs10[data-caption-text-color="yellow"] {
+    --tyl-caption-text-rgb: 255, 255, 0;
+}
+.tylVideoPlayer--videojs10[data-caption-text-color="cyan"] {
+    --tyl-caption-text-rgb: 0, 255, 255;
+}
+.tylVideoPlayer--videojs10[data-caption-text-color="magenta"] {
+    --tyl-caption-text-rgb: 255, 0, 255;
+}
+.tylVideoPlayer--videojs10[data-caption-text-opacity="0"] {
+    --tyl-caption-text-alpha: 0.0;
+}
+.tylVideoPlayer--videojs10[data-caption-text-opacity="25"] {
+    --tyl-caption-text-alpha: 0.25;
+}
+.tylVideoPlayer--videojs10[data-caption-text-opacity="50"] {
+    --tyl-caption-text-alpha: 0.5;
+}
+.tylVideoPlayer--videojs10[data-caption-text-opacity="75"] {
+    --tyl-caption-text-alpha: 0.75;
+}
+.tylVideoPlayer--videojs10[data-caption-text-opacity="100"] {
+    --tyl-caption-text-alpha: 1.0;
+}
+.tylVideoPlayer--videojs10[data-caption-text-color] video::cue,
+.tylVideoPlayer--videojs10[data-caption-text-color] tyl-video-skin::part(tyl-caption-preview),
+.tylVideoPlayer--videojs10[data-caption-text-opacity] video::cue,
+.tylVideoPlayer--videojs10[data-caption-text-opacity] tyl-video-skin::part(tyl-caption-preview) {
+    color: ~"rgba(var(--tyl-caption-text-rgb, 255, 255, 255), var(--tyl-caption-text-alpha, 1))";
+}
+.tylVideoPlayer--videojs10[data-caption-background-color="white"] {
+    --tyl-caption-background-rgb: 255, 255, 255;
+}
+.tylVideoPlayer--videojs10[data-caption-background-color="black"] {
+    --tyl-caption-background-rgb: 0, 0, 0;
+}
+.tylVideoPlayer--videojs10[data-caption-background-color="red"] {
+    --tyl-caption-background-rgb: 255, 0, 0;
+}
+.tylVideoPlayer--videojs10[data-caption-background-color="green"] {
+    --tyl-caption-background-rgb: 0, 255, 0;
+}
+.tylVideoPlayer--videojs10[data-caption-background-color="blue"] {
+    --tyl-caption-background-rgb: 0, 0, 255;
+}
+.tylVideoPlayer--videojs10[data-caption-background-color="yellow"] {
+    --tyl-caption-background-rgb: 255, 255, 0;
+}
+.tylVideoPlayer--videojs10[data-caption-background-color="cyan"] {
+    --tyl-caption-background-rgb: 0, 255, 255;
+}
+.tylVideoPlayer--videojs10[data-caption-background-color="magenta"] {
+    --tyl-caption-background-rgb: 255, 0, 255;
+}
+.tylVideoPlayer--videojs10[data-caption-background-opacity="0"] {
+    --tyl-caption-background-alpha: 0.0;
+}
+.tylVideoPlayer--videojs10[data-caption-background-opacity="25"] {
+    --tyl-caption-background-alpha: 0.25;
+}
+.tylVideoPlayer--videojs10[data-caption-background-opacity="50"] {
+    --tyl-caption-background-alpha: 0.5;
+}
+.tylVideoPlayer--videojs10[data-caption-background-opacity="75"] {
+    --tyl-caption-background-alpha: 0.75;
+}
+.tylVideoPlayer--videojs10[data-caption-background-opacity="100"] {
+    --tyl-caption-background-alpha: 1.0;
+}
+.tylVideoPlayer--videojs10[data-caption-background-color] video::cue,
+.tylVideoPlayer--videojs10[data-caption-background-color] tyl-video-skin::part(tyl-caption-preview),
+.tylVideoPlayer--videojs10[data-caption-background-opacity] video::cue,
+.tylVideoPlayer--videojs10[data-caption-background-opacity] tyl-video-skin::part(tyl-caption-preview) {
+    background-color: ~"rgba(var(--tyl-caption-background-rgb, 0, 0, 0), var(--tyl-caption-background-alpha, 0.75))";
+}
+.tylVideoPlayer--videojs10[data-caption-edge="none"] video::cue,
+.tylVideoPlayer--videojs10[data-caption-edge="none"] tyl-video-skin::part(tyl-caption-preview) {
+    text-shadow: none;
+}
+.tylVideoPlayer--videojs10[data-caption-edge="shadow"] video::cue,
+.tylVideoPlayer--videojs10[data-caption-edge="shadow"] tyl-video-skin::part(tyl-caption-preview) {
+    text-shadow: 2px 2px 3px black;
+}
+.tylVideoPlayer--videojs10[data-caption-edge="outline"] video::cue,
+.tylVideoPlayer--videojs10[data-caption-edge="outline"] tyl-video-skin::part(tyl-caption-preview) {
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+}
+.tylVideoPlayer--videojs10[data-caption-edge="raised"] video::cue,
+.tylVideoPlayer--videojs10[data-caption-edge="raised"] tyl-video-skin::part(tyl-caption-preview) {
+    text-shadow: 1px 1px 0 black, -1px -1px 0 white;
+}
+.tylVideoPlayer--videojs10[data-caption-edge="depressed"] video::cue,
+.tylVideoPlayer--videojs10[data-caption-edge="depressed"] tyl-video-skin::part(tyl-caption-preview) {
+    text-shadow: -1px -1px 0 black, 1px 1px 0 white;
+}
+
+.tylVideoPlayer--videojs10 hlsjs-video > video {
+    display: block;
+    object-fit: var(--media-object-fit, contain);
+    object-position: var(--media-object-position, center);
+}
+.tylVideoPlayer--videojs10 hlsjs-video > video::-webkit-media-text-track-container {
+    transition: translate var(--media-caption-track-duration, 0s) ease-out;
+    transition-delay: var(--media-caption-track-delay, 0s);
+    translate: 0 var(--media-caption-track-y, 0px);
+    scale: 0.98;
+    z-index: 1;
+    font-family: inherit;
+}
+]]></template>
+  <template type="public" title="n97_video_player_copyright_branding" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[<xf:if is="!$xf.options.tyl_video_player_remove_branding">
+	{{ phrase('tyl_video_player_copyright_branding', {'year': date($xf.time, 'Y')}) }}
+</xf:if>]]></template>
+  <template type="admin" title="tyl_video_player_option_macros" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[<xf:macro id="option_form_block" arg-group="!" arg-options="!" arg-containerBeforeHtml="" arg-headers="{{ [] }}" arg-forceShowAdvanced="{{ false }}">
+    <xf:if is="$options is not empty">
+        <xf:form action="{{ link('options/update') }}" ajax="true" class="block">
+            {$containerBeforeHtml}
+            <div class="block-container">
+                <xf:foreach loop="$headers" value="$header">
+                    <h3 class="block-formSectionHeader">{$header.label}</h3>
+                    <xf:macro id="option_rows" arg-group="{$group}" arg-options="{$options}" arg-minDisplayOrder="{$header.minDisplayOrder}" arg-maxDisplayOrder="{$header.maxDisplayOrder}" arg-forceShowAdvanced="{$forceShowAdvanced}" />
+                </xf:foreach>
+                <xf:submitrow sticky="true" icon="save" />
+            </div>
+        </xf:form>
+    </xf:if>
+</xf:macro>
+<xf:macro id="option_form_block_tabs" arg-group="!" arg-options="!" arg-containerBeforeHtml="" arg-headers="{{ [] }}" arg-forceShowAdvanced="{{ false }}">
+<xf:if is="$options is not empty">
+<xf:form action="{{ link('options/update') }}" ajax="true" class="block">
+    {$containerBeforeHtml}
+    <div class="block-container">
+        <h2 class="block-tabHeader tabs" data-xf-init="tabs" role="tablist" aria-label="{$group.title}">
+            <xf:foreach loop="$headers" key="$key" value="$header">
+                <a class="tabs-tab{{ $header.active ? ' is-active' : '' }}" role="tab" id="tyl-video-player-option-macros-{$key}" aria-controls="tyl-video-player-option-macros-{$key}-pane" aria-selected="{{ $header.active ? 'true' : 'false' }}" tabindex="0">{$header.label}</a>
+            </xf:foreach>
+        </h2>
+        <ul class="tabPanes">
+            <xf:foreach loop="$headers" key="$key" value="$header">
+                <li class="{{ $header.active ? 'is-active' : '' }}" role="tabpanel" id="tyl-video-player-option-macros-{$key}-pane" aria-labelledby="tyl-video-player-option-macros-{$key}">
+                    <xf:macro id="option_rows" arg-group="{$group}" arg-options="{$options}" arg-minDisplayOrder="{$header.minDisplayOrder}" arg-maxDisplayOrder="{$header.maxDisplayOrder}" arg-forceShowAdvanced="{$forceShowAdvanced}" />
+                </li>
+            </xf:foreach>
+        </ul>
+        <xf:submitrow sticky="true" icon="save" />
+    </div>
+</xf:form>
+</xf:if>
+</xf:macro>
+<xf:macro id="option_rows" arg-group="!" arg-options="!" arg-minDisplayOrder="!" arg-maxDisplayOrder="!" arg-forceShowAdvanced="{{ false }}">
+    <div class="block-body">
+        <xf:foreach loop="$options" value="$option">
+            <xf:if is="{$option.Relations.{$group.group_id}.display_order} >= $minDisplayOrder AND {$option.Relations.{$group.group_id}.display_order} < $maxDisplayOrder">
+                <xf:macro id="option_macros::option_row" arg-group="{$group}" arg-option="{$option}" arg-forceShowAdvanced="{$forceShowAdvanced}" />
+            </xf:if>
+        </xf:foreach>
+    </div>
+</xf:macro>]]></template>
+  <template type="public" title="tyl_video_player_videojs10_skin" version_id="1000002" version_string="1.0.0 Dev 3"><![CDATA[<!-- Derived from @videojs/html 10.3.0 default video skin, licensed Apache-2.0. -->
+<template class="js-tylVideojs10Skin">
+<media-container class="media-skin media-container video-skin" part="tyl-container" data-theme="default" data-preset="video">
+<slot name="tyl-playlist-controls"></slot>
+<slot name="tyl-video-ad"></slot>
+<slot>
+</slot>
+<media-poster class="media-poster">
+<slot name="poster">
+<img alt="" decoding="async" class="media-poster-image">
+</slot>
+</media-poster>
+<media-buffering-indicator class="media-buffering-indicator">
+<media-icon name="spinner" class="media-buffering-indicator-spinner-icon">
+</media-icon>
+</media-buffering-indicator>
+<media-error-dialog class="media-dialog-root">
+<media-dialog-backdrop class="media-dialog-backdrop">
+</media-dialog-backdrop>
+<media-dialog-popup class="media-dialog-popup">
+<div class="media-dialog-content">
+<media-dialog-title class="media-dialog-title">
+</media-dialog-title>
+<media-dialog-description class="media-dialog-description">
+</media-dialog-description>
+</div>
+<div class="media-dialog-actions">
+<media-dialog-close class="media-button media-dialog-close">
+</media-dialog-close>
+</div>
+</media-dialog-popup>
+</media-error-dialog>
+<media-title class="media-title">
+</media-title>
+<media-controls>
+<media-controls-backdrop class="video-controls-backdrop">
+</media-controls-backdrop>
+<media-controls-content class="video-controls video-controls-content">
+<media-tooltip-group>
+<media-controls-group class="video-controls-primary">
+<media-play-button class="media-button media-play-button" id="vjs-iSAklLIk-0-trigger">
+<media-icon name="restart" class="media-button-icon media-play-button-restart-icon">
+</media-icon>
+<media-icon name="play" class="media-button-icon media-play-button-play-icon">
+</media-icon>
+<media-icon name="pause" class="media-button-icon media-play-button-pause-icon">
+</media-icon>
+</media-play-button>
+<media-tooltip trigger="vjs-iSAklLIk-0-trigger" side="top" class="media-popup media-popup-safe-area media-popup-transition media-popup-surface media-tooltip">
+<media-tooltip-label>
+</media-tooltip-label>
+<media-tooltip-shortcut class="media-tooltip-shortcut">
+</media-tooltip-shortcut>
+</media-tooltip>
+<media-mute-button commandfor="vjs-F3QfBzzz-0-popup" class="media-button media-mute-button video-controls-volume-button" id="vjs-iSAklLIk-0-2-trigger">
+<media-icon name="volume-off" class="media-button-icon media-mute-button-off-icon">
+</media-icon>
+<media-icon name="volume-low" class="media-button-icon media-mute-button-low-icon">
+</media-icon>
+<media-icon name="volume-high" class="media-button-icon media-mute-button-high-icon">
+</media-icon>
+</media-mute-button>
+<media-tooltip trigger="vjs-iSAklLIk-0-2-trigger" delay="0" disabled sticky side="top" class="media-popup media-popup-safe-area media-popup-transition media-popup-surface media-tooltip">
+<media-tooltip-label>
+</media-tooltip-label>
+<media-tooltip-shortcut class="media-tooltip-shortcut">
+</media-tooltip-shortcut>
+</media-tooltip>
+<media-volume-popover open-on-hover delay="200" close-delay="100" side="top" class="media-popup media-popup-safe-area media-popup-transition media-popup-surface media-volume-popover" id="vjs-F3QfBzzz-0-popup">
+<media-volume-slider class="media-slider media-volume-slider" thumb-alignment="edge" orientation="vertical">
+<media-slider-track class="media-slider-track">
+<media-slider-fill class="media-slider-fill">
+</media-slider-fill>
+</media-slider-track>
+<media-slider-thumb class="media-slider-thumb media-volume-slider-thumb">
+</media-slider-thumb>
+</media-volume-slider>
+</media-volume-popover>
+<media-controls-group class="video-time-slider-group">
+<media-time class="media-time-value video-time-value" type="current">
+</media-time>
+<media-time-slider class="media-slider media-time-slider">
+<media-time-slider-chapters class="media-time-slider-chapters">
+<template>
+<div class="media-time-slider-chapter">
+<media-slider-track class="media-slider-track media-time-slider-chapter-track">
+<media-slider-buffer class="media-slider-buffer media-time-slider-chapter-layer">
+</media-slider-buffer>
+<media-slider-fill class="media-slider-fill media-time-slider-chapter-layer">
+</media-slider-fill>
+</media-slider-track>
+</div>
+</template>
+</media-time-slider-chapters>
+<media-slider-thumb class="media-slider-thumb media-time-slider-thumb">
+</media-slider-thumb>
+<media-slider-preview class="media-slider-preview" overflow="visible">
+<media-slider-thumbnail class="media-slider-preview-content media-popup-surface media-slider-thumbnail">
+<slot name="thumbnail">
+<img alt="" aria-hidden="true" decoding="async" class="media-slider-thumbnail-image">
+</slot>
+<media-icon name="spinner" class="media-slider-thumbnail-spinner-icon">
+</media-icon>
+</media-slider-thumbnail>
+<div class="media-slider-preview-content media-time-slider-preview-content">
+<media-time-slider-chapter-title class="media-time-slider-chapter-title">
+</media-time-slider-chapter-title>
+<media-slider-value class="media-time-slider-value" type="pointer">
+</media-slider-value>
+</div>
+</media-slider-preview>
+</media-time-slider>
+<media-time class="media-time-toggle video-time-value" type="remaining" toggle>
+</media-time>
+</media-controls-group>
+<media-captions-button class="media-button media-captions-button video-controls-captions-button" id="vjs-iSAklLIk-0-3-trigger">
+<media-icon name="captions-off" class="media-button-icon media-captions-button-off-icon">
+</media-icon>
+<media-icon name="captions-on" class="media-button-icon media-captions-button-on-icon">
+</media-icon>
+</media-captions-button>
+<media-tooltip trigger="vjs-iSAklLIk-0-3-trigger" side="top" class="media-popup media-popup-safe-area media-popup-transition media-popup-surface media-tooltip">
+<media-tooltip-label>
+</media-tooltip-label>
+<media-tooltip-shortcut class="media-tooltip-shortcut">
+</media-tooltip-shortcut>
+</media-tooltip>
+<button commandfor="vjs-28BtKs3v-0-popup" class="media-button media-settings-menu-trigger video-controls-settings-button" id="vjs-iSAklLIk-0-4-trigger">
+<media-icon name="gear" class="media-button-icon-base media-settings-menu-trigger-icon">
+</media-icon>
+<media-text class="media-settings-menu-trigger-label" token="menu.settings">{{ phrase('tyl_video_player_settings') }}</media-text>
+</button>
+<media-tooltip trigger="vjs-iSAklLIk-0-4-trigger" side="top" class="media-popup media-popup-safe-area media-popup-transition media-popup-surface media-tooltip">
+<media-text token="menu.settings">{{ phrase('tyl_video_player_settings') }}</media-text>
+</media-tooltip>
+<media-menu side="top" align="center" class="media-popup media-popup-surface media-menu-popup media-menu-resizable-popup" id="vjs-28BtKs3v-0-popup">
+<media-menu-content class="media-menu-content">
+<media-menu-item commandfor="vjs-ZGpCKm5h-0-content" class="media-menu-trigger-item">
+<media-icon name="switches" class="media-menu-trigger-item-icon">
+</media-icon>
+<media-text token="menu.quality">{{ phrase('tyl_video_player_quality') }}</media-text>
+<span class="media-menu-hint">
+<span data-part="value" class="media-menu-hint-label">
+</span>
+<media-icon name="chevron" class="media-menu-forward-chevron">
+</media-icon>
+</span>
+</media-menu-item>
+<media-menu-content class="media-menu-content" id="vjs-ZGpCKm5h-0-content">
+<media-menu-item class="media-menu-back-item">
+<media-icon name="chevron" class="media-menu-back-chevron">
+</media-icon>
+<media-text token="menu.quality">{{ phrase('tyl_video_player_quality') }}</media-text>
+</media-menu-item>
+<media-menu-separator class="media-menu-separator">
+</media-menu-separator>
+<media-quality-radio-group class="media-menu-radio-group">
+<template>
+<media-menu-radio-item class="media-menu-radio-item">
+<span>
+<span data-part="label">
+</span>
+<sup data-part="tier" class="media-menu-tier">
+</sup>
+</span>
+<span data-part="badge" class="media-menu-badge">
+</span>
+<media-menu-item-indicator force-mount class="media-menu-item-indicator">
+<media-icon name="check" class="media-menu-radio-item-icon">
+</media-icon>
+</media-menu-item-indicator>
+</media-menu-radio-item>
+</template>
+</media-quality-radio-group>
+</media-menu-content>
+<media-menu-item commandfor="vjs-rPcYSc7i-0-content" class="media-menu-trigger-item">
+<media-icon name="speech" class="media-menu-trigger-item-icon">
+</media-icon>
+<media-text token="menu.audio">{{ phrase('tyl_video_player_audio') }}</media-text>
+<span class="media-menu-hint">
+<span data-part="value" class="media-menu-hint-label">
+</span>
+<media-icon name="chevron" class="media-menu-forward-chevron">
+</media-icon>
+</span>
+</media-menu-item>
+<media-menu-content class="media-menu-content" id="vjs-rPcYSc7i-0-content">
+<media-menu-item class="media-menu-back-item">
+<media-icon name="chevron" class="media-menu-back-chevron">
+</media-icon>
+<media-text token="menu.audio">{{ phrase('tyl_video_player_audio') }}</media-text>
+</media-menu-item>
+<media-menu-separator class="media-menu-separator">
+</media-menu-separator>
+<media-audio-track-radio-group class="media-menu-radio-group">
+<template>
+<media-menu-radio-item class="media-menu-radio-item">
+<span data-part="label">
+</span>
+<media-menu-item-indicator force-mount class="media-menu-item-indicator">
+<media-icon name="check" class="media-menu-radio-item-icon">
+</media-icon>
+</media-menu-item-indicator>
+</media-menu-radio-item>
+</template>
+</media-audio-track-radio-group>
+</media-menu-content>
+<media-menu-item commandfor="vjs-8B_qQK6x-0-content" class="media-menu-trigger-item">
+<media-icon name="speed" class="media-menu-trigger-item-icon">
+</media-icon>
+<media-text token="menu.speed">{{ phrase('tyl_video_player_speed') }}</media-text>
+<span class="media-menu-hint">
+<span data-part="value" class="media-menu-hint-label">
+</span>
+<media-icon name="chevron" class="media-menu-forward-chevron">
+</media-icon>
+</span>
+</media-menu-item>
+<media-menu-content class="media-menu-content" id="vjs-8B_qQK6x-0-content">
+<media-menu-item class="media-menu-back-item">
+<media-icon name="chevron" class="media-menu-back-chevron">
+</media-icon>
+<media-text token="menu.speed">{{ phrase('tyl_video_player_speed') }}</media-text>
+</media-menu-item>
+<media-menu-separator class="media-menu-separator">
+</media-menu-separator>
+<media-playback-rate-radio-group class="media-menu-radio-group">
+<template>
+<media-menu-radio-item class="media-menu-radio-item">
+<span data-part="label">
+</span>
+<media-menu-item-indicator force-mount class="media-menu-item-indicator">
+<media-icon name="check" class="media-menu-radio-item-icon">
+</media-icon>
+</media-menu-item-indicator>
+</media-menu-radio-item>
+</template>
+</media-playback-rate-radio-group>
+</media-menu-content>
+<media-menu-item commandfor="vjs-fVL6fVBf-0-content" class="media-menu-trigger-item">
+<media-icon name="captions-off" class="media-menu-trigger-item-icon">
+</media-icon>
+<media-text token="menu.captions">{{ phrase('tyl_video_player_captions') }}</media-text>
+<span class="media-menu-hint">
+<span data-part="value" class="media-menu-hint-label">
+</span>
+<media-icon name="chevron" class="media-menu-forward-chevron">
+</media-icon>
+</span>
+</media-menu-item>
+<media-menu-content class="media-menu-content" id="vjs-fVL6fVBf-0-content">
+<media-menu-item class="media-menu-back-item">
+<media-icon name="chevron" class="media-menu-back-chevron">
+</media-icon>
+<media-text token="menu.captions">{{ phrase('tyl_video_player_captions') }}</media-text>
+</media-menu-item>
+<media-menu-separator class="media-menu-separator">
+</media-menu-separator>
+<media-captions-radio-group class="media-menu-radio-group">
+<template>
+<media-menu-radio-item class="media-menu-radio-item">
+<span data-part="label">
+</span>
+<media-menu-item-indicator force-mount class="media-menu-item-indicator">
+<media-icon name="check" class="media-menu-radio-item-icon">
+</media-icon>
+</media-menu-item-indicator>
+</media-menu-radio-item>
+</template>
+</media-captions-radio-group>
+</media-menu-content>
+<media-menu-item commandfor="tyl-caption-styles" class="media-menu-trigger-item" data-tyl-caption-trigger><media-icon name="captions-off" class="media-menu-trigger-item-icon"></media-icon><span>{{ phrase('tyl_video_player_caption_styles') }}</span><span class="media-menu-hint"><media-icon name="chevron" class="media-menu-forward-chevron"></media-icon></span></media-menu-item><media-menu-content class="media-menu-content" id="tyl-caption-styles" aria-label="{{ phrase('tyl_video_player_caption_styles')|for_attr }}"><media-menu-item class="media-menu-back-item"><media-icon name="chevron" class="media-menu-back-chevron"></media-icon><span>{{ phrase('tyl_video_player_caption_styles') }}</span></media-menu-item><media-menu-separator class="media-menu-separator"></media-menu-separator><div part="tyl-caption-preview" aria-hidden="true">{{ phrase('tyl_video_player_captions_look_like_this') }}</div><media-menu-item commandfor="tyl-caption-font" class="media-menu-trigger-item" ><media-icon name="captions-off" class="media-menu-trigger-item-icon"></media-icon><span>{{ phrase('tyl_video_player_caption_font_family') }}</span><span class="media-menu-hint"><media-icon name="chevron" class="media-menu-forward-chevron"></media-icon></span></media-menu-item><media-menu-content class="media-menu-content" id="tyl-caption-font" aria-label="{{ phrase('tyl_video_player_caption_font_family')|for_attr }}"><media-menu-item class="media-menu-back-item"><media-icon name="chevron" class="media-menu-back-chevron"></media-icon><span>{{ phrase('tyl_video_player_caption_font_family') }}</span></media-menu-item><media-menu-separator class="media-menu-separator"></media-menu-separator><tyl-menu-radio-group class="media-menu-radio-group" data-tyl-caption-setting="data-caption-font" aria-label="{{ phrase('tyl_video_player_caption_font_family') }}" value="default"><media-menu-radio-item class="media-menu-radio-item" value="default"><span data-part="label">{{ phrase('tyl_video_player_default') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="sans"><span data-part="label">{{ phrase('tyl_video_player_caption_sans') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="serif"><span data-part="label">{{ phrase('tyl_video_player_caption_serif') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="monospace"><span data-part="label">{{ phrase('tyl_video_player_caption_monospace') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="cursive"><span data-part="label">{{ phrase('tyl_video_player_caption_cursive') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="smallcaps"><span data-part="label">{{ phrase('tyl_video_player_caption_smallcaps') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item></tyl-menu-radio-group></media-menu-content><media-menu-item commandfor="tyl-caption-size" class="media-menu-trigger-item" ><media-icon name="captions-off" class="media-menu-trigger-item-icon"></media-icon><span>{{ phrase('tyl_video_player_caption_font_size') }}</span><span class="media-menu-hint"><media-icon name="chevron" class="media-menu-forward-chevron"></media-icon></span></media-menu-item><media-menu-content class="media-menu-content" id="tyl-caption-size" aria-label="{{ phrase('tyl_video_player_caption_font_size')|for_attr }}"><media-menu-item class="media-menu-back-item"><media-icon name="chevron" class="media-menu-back-chevron"></media-icon><span>{{ phrase('tyl_video_player_caption_font_size') }}</span></media-menu-item><media-menu-separator class="media-menu-separator"></media-menu-separator><tyl-menu-radio-group class="media-menu-radio-group" data-tyl-caption-setting="data-caption-size" aria-label="{{ phrase('tyl_video_player_caption_font_size') }}" value="default"><media-menu-radio-item class="media-menu-radio-item" value="default"><span data-part="label">{{ phrase('tyl_video_player_default') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="75"><span data-part="label">{{ phrase('tyl_video_player_caption_percent_75') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="100"><span data-part="label">{{ phrase('tyl_video_player_caption_percent_100') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="125"><span data-part="label">{{ phrase('tyl_video_player_caption_percent_125') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="150"><span data-part="label">{{ phrase('tyl_video_player_caption_percent_150') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="200"><span data-part="label">{{ phrase('tyl_video_player_caption_percent_200') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item></tyl-menu-radio-group></media-menu-content><media-menu-item commandfor="tyl-caption-text-color" class="media-menu-trigger-item" ><media-icon name="captions-off" class="media-menu-trigger-item-icon"></media-icon><span>{{ phrase('tyl_video_player_caption_text_color') }}</span><span class="media-menu-hint"><media-icon name="chevron" class="media-menu-forward-chevron"></media-icon></span></media-menu-item><media-menu-content class="media-menu-content" id="tyl-caption-text-color" aria-label="{{ phrase('tyl_video_player_caption_text_color')|for_attr }}"><media-menu-item class="media-menu-back-item"><media-icon name="chevron" class="media-menu-back-chevron"></media-icon><span>{{ phrase('tyl_video_player_caption_text_color') }}</span></media-menu-item><media-menu-separator class="media-menu-separator"></media-menu-separator><tyl-menu-radio-group class="media-menu-radio-group" data-tyl-caption-setting="data-caption-text-color" aria-label="{{ phrase('tyl_video_player_caption_text_color') }}" value="default"><media-menu-radio-item class="media-menu-radio-item" value="default"><span data-part="label">{{ phrase('tyl_video_player_default') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="white"><span data-part="label">{{ phrase('tyl_video_player_caption_white') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="black"><span data-part="label">{{ phrase('tyl_video_player_caption_black') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="red"><span data-part="label">{{ phrase('tyl_video_player_caption_red') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="green"><span data-part="label">{{ phrase('tyl_video_player_caption_green') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="blue"><span data-part="label">{{ phrase('tyl_video_player_caption_blue') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="yellow"><span data-part="label">{{ phrase('tyl_video_player_caption_yellow') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="cyan"><span data-part="label">{{ phrase('tyl_video_player_caption_cyan') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="magenta"><span data-part="label">{{ phrase('tyl_video_player_caption_magenta') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item></tyl-menu-radio-group></media-menu-content><media-menu-item commandfor="tyl-caption-text-opacity" class="media-menu-trigger-item" ><media-icon name="captions-off" class="media-menu-trigger-item-icon"></media-icon><span>{{ phrase('tyl_video_player_caption_text_opacity') }}</span><span class="media-menu-hint"><media-icon name="chevron" class="media-menu-forward-chevron"></media-icon></span></media-menu-item><media-menu-content class="media-menu-content" id="tyl-caption-text-opacity" aria-label="{{ phrase('tyl_video_player_caption_text_opacity')|for_attr }}"><media-menu-item class="media-menu-back-item"><media-icon name="chevron" class="media-menu-back-chevron"></media-icon><span>{{ phrase('tyl_video_player_caption_text_opacity') }}</span></media-menu-item><media-menu-separator class="media-menu-separator"></media-menu-separator><tyl-menu-radio-group class="media-menu-radio-group" data-tyl-caption-setting="data-caption-text-opacity" aria-label="{{ phrase('tyl_video_player_caption_text_opacity') }}" value="default"><media-menu-radio-item class="media-menu-radio-item" value="default"><span data-part="label">{{ phrase('tyl_video_player_default') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="0"><span data-part="label">{{ phrase('tyl_video_player_caption_percent_0') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="25"><span data-part="label">{{ phrase('tyl_video_player_caption_percent_25') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="50"><span data-part="label">{{ phrase('tyl_video_player_caption_percent_50') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="75"><span data-part="label">{{ phrase('tyl_video_player_caption_percent_75') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="100"><span data-part="label">{{ phrase('tyl_video_player_caption_percent_100') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item></tyl-menu-radio-group></media-menu-content><media-menu-item commandfor="tyl-caption-background-color" class="media-menu-trigger-item" ><media-icon name="captions-off" class="media-menu-trigger-item-icon"></media-icon><span>{{ phrase('tyl_video_player_caption_background_color') }}</span><span class="media-menu-hint"><media-icon name="chevron" class="media-menu-forward-chevron"></media-icon></span></media-menu-item><media-menu-content class="media-menu-content" id="tyl-caption-background-color" aria-label="{{ phrase('tyl_video_player_caption_background_color')|for_attr }}"><media-menu-item class="media-menu-back-item"><media-icon name="chevron" class="media-menu-back-chevron"></media-icon><span>{{ phrase('tyl_video_player_caption_background_color') }}</span></media-menu-item><media-menu-separator class="media-menu-separator"></media-menu-separator><tyl-menu-radio-group class="media-menu-radio-group" data-tyl-caption-setting="data-caption-background-color" aria-label="{{ phrase('tyl_video_player_caption_background_color') }}" value="default"><media-menu-radio-item class="media-menu-radio-item" value="default"><span data-part="label">{{ phrase('tyl_video_player_default') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="white"><span data-part="label">{{ phrase('tyl_video_player_caption_white') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="black"><span data-part="label">{{ phrase('tyl_video_player_caption_black') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="red"><span data-part="label">{{ phrase('tyl_video_player_caption_red') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="green"><span data-part="label">{{ phrase('tyl_video_player_caption_green') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="blue"><span data-part="label">{{ phrase('tyl_video_player_caption_blue') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="yellow"><span data-part="label">{{ phrase('tyl_video_player_caption_yellow') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="cyan"><span data-part="label">{{ phrase('tyl_video_player_caption_cyan') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="magenta"><span data-part="label">{{ phrase('tyl_video_player_caption_magenta') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item></tyl-menu-radio-group></media-menu-content><media-menu-item commandfor="tyl-caption-background-opacity" class="media-menu-trigger-item" ><media-icon name="captions-off" class="media-menu-trigger-item-icon"></media-icon><span>{{ phrase('tyl_video_player_caption_background_opacity') }}</span><span class="media-menu-hint"><media-icon name="chevron" class="media-menu-forward-chevron"></media-icon></span></media-menu-item><media-menu-content class="media-menu-content" id="tyl-caption-background-opacity" aria-label="{{ phrase('tyl_video_player_caption_background_opacity')|for_attr }}"><media-menu-item class="media-menu-back-item"><media-icon name="chevron" class="media-menu-back-chevron"></media-icon><span>{{ phrase('tyl_video_player_caption_background_opacity') }}</span></media-menu-item><media-menu-separator class="media-menu-separator"></media-menu-separator><tyl-menu-radio-group class="media-menu-radio-group" data-tyl-caption-setting="data-caption-background-opacity" aria-label="{{ phrase('tyl_video_player_caption_background_opacity') }}" value="default"><media-menu-radio-item class="media-menu-radio-item" value="default"><span data-part="label">{{ phrase('tyl_video_player_default') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="0"><span data-part="label">{{ phrase('tyl_video_player_caption_percent_0') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="25"><span data-part="label">{{ phrase('tyl_video_player_caption_percent_25') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="50"><span data-part="label">{{ phrase('tyl_video_player_caption_percent_50') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="75"><span data-part="label">{{ phrase('tyl_video_player_caption_percent_75') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="100"><span data-part="label">{{ phrase('tyl_video_player_caption_percent_100') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item></tyl-menu-radio-group></media-menu-content><media-menu-item commandfor="tyl-caption-edge" class="media-menu-trigger-item" ><media-icon name="captions-off" class="media-menu-trigger-item-icon"></media-icon><span>{{ phrase('tyl_video_player_caption_edge') }}</span><span class="media-menu-hint"><media-icon name="chevron" class="media-menu-forward-chevron"></media-icon></span></media-menu-item><media-menu-content class="media-menu-content" id="tyl-caption-edge" aria-label="{{ phrase('tyl_video_player_caption_edge')|for_attr }}"><media-menu-item class="media-menu-back-item"><media-icon name="chevron" class="media-menu-back-chevron"></media-icon><span>{{ phrase('tyl_video_player_caption_edge') }}</span></media-menu-item><media-menu-separator class="media-menu-separator"></media-menu-separator><tyl-menu-radio-group class="media-menu-radio-group" data-tyl-caption-setting="data-caption-edge" aria-label="{{ phrase('tyl_video_player_caption_edge') }}" value="default"><media-menu-radio-item class="media-menu-radio-item" value="default"><span data-part="label">{{ phrase('tyl_video_player_default') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="none"><span data-part="label">{{ phrase('tyl_video_player_caption_edge_none') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="shadow"><span data-part="label">{{ phrase('tyl_video_player_caption_edge_shadow') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="outline"><span data-part="label">{{ phrase('tyl_video_player_caption_edge_outline') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="raised"><span data-part="label">{{ phrase('tyl_video_player_caption_edge_raised') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item><media-menu-radio-item class="media-menu-radio-item" value="depressed"><span data-part="label">{{ phrase('tyl_video_player_caption_edge_depressed') }}</span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item></tyl-menu-radio-group></media-menu-content><media-menu-item class="media-menu-trigger-item" data-tyl-caption-reset>{{ phrase('tyl_video_player_reset') }}</media-menu-item></media-menu-content><media-menu-item commandfor="tyl-chapters" class="media-menu-trigger-item" data-tyl-chapters-trigger><media-icon name="captions-off" class="media-menu-trigger-item-icon"></media-icon><span>{{ phrase('tyl_video_player_chapters') }}</span><span class="media-menu-hint"><media-icon name="chevron" class="media-menu-forward-chevron"></media-icon></span></media-menu-item><media-menu-content class="media-menu-content" id="tyl-chapters" aria-label="{{ phrase('tyl_video_player_chapters')|for_attr }}"><media-menu-item class="media-menu-back-item"><media-icon name="chevron" class="media-menu-back-chevron"></media-icon><span>{{ phrase('tyl_video_player_chapters') }}</span></media-menu-item><media-menu-separator class="media-menu-separator"></media-menu-separator><tyl-menu-radio-group class="media-menu-radio-group" data-tyl-chapters aria-label="{{ phrase('tyl_video_player_chapters') }}"></tyl-menu-radio-group><template class="js-tylChapterRow" data-chapter-label="{{ phrase('tyl_video_player_chapter')|for_attr }}"><media-menu-radio-item class="media-menu-radio-item"><span data-part="time" part="tyl-chapter-time" aria-hidden="true"></span><span data-part="label" part="tyl-chapter-label"></span><media-menu-item-indicator force-mount class="media-menu-item-indicator"><media-icon name="check" class="media-menu-radio-item-icon"></media-icon></media-menu-item-indicator></media-menu-radio-item></template></media-menu-content>
+</media-menu-content>
+</media-menu>
+</media-controls-group>
+<media-controls-group class="video-controls-secondary" part="tyl-secondary-controls">
+<media-cast-button class="media-button media-cast-button" id="vjs-iSAklLIk-0-5-trigger">
+<media-icon name="cast-enter" class="media-button-icon media-cast-button-enter-icon">
+</media-icon>
+<media-icon name="cast-exit" class="media-button-icon media-cast-button-exit-icon">
+</media-icon>
+</media-cast-button>
+<media-tooltip trigger="vjs-iSAklLIk-0-5-trigger" side="top" class="media-popup media-popup-safe-area media-popup-transition media-popup-surface media-tooltip">
+<media-tooltip-label>
+</media-tooltip-label>
+<media-tooltip-shortcut class="media-tooltip-shortcut">
+</media-tooltip-shortcut>
+</media-tooltip>
+<media-airplay-button class="media-button media-airplay-button" id="vjs-iSAklLIk-0-6-trigger">
+<media-icon name="airplay-enter" class="media-button-icon media-airplay-button-enter-icon">
+</media-icon>
+<media-icon name="airplay-exit" class="media-button-icon media-airplay-button-exit-icon">
+</media-icon>
+</media-airplay-button>
+<media-tooltip trigger="vjs-iSAklLIk-0-6-trigger" side="top" class="media-popup media-popup-safe-area media-popup-transition media-popup-surface media-tooltip">
+<media-tooltip-label>
+</media-tooltip-label>
+<media-tooltip-shortcut class="media-tooltip-shortcut">
+</media-tooltip-shortcut>
+</media-tooltip>
+<media-pip-button class="media-button media-pip-button" id="vjs-iSAklLIk-0-7-trigger">
+<media-icon name="pip-enter" class="media-button-icon media-pip-button-enter-icon">
+</media-icon>
+<media-icon name="pip-exit" class="media-button-icon media-pip-button-exit-icon">
+</media-icon>
+</media-pip-button>
+<media-tooltip trigger="vjs-iSAklLIk-0-7-trigger" side="top" class="media-popup media-popup-safe-area media-popup-transition media-popup-surface media-tooltip">
+<media-tooltip-label>
+</media-tooltip-label>
+<media-tooltip-shortcut class="media-tooltip-shortcut">
+</media-tooltip-shortcut>
+</media-tooltip>
+<media-fullscreen-button class="media-button media-fullscreen-button" id="vjs-iSAklLIk-0-8-trigger">
+<media-icon name="fullscreen-enter" class="media-button-icon media-fullscreen-button-enter-icon">
+</media-icon>
+<media-icon name="fullscreen-exit" class="media-button-icon media-fullscreen-button-exit-icon">
+</media-icon>
+</media-fullscreen-button>
+<media-tooltip trigger="vjs-iSAklLIk-0-8-trigger" side="top" class="media-popup media-popup-safe-area media-popup-transition media-popup-surface media-tooltip">
+<media-tooltip-label>
+</media-tooltip-label>
+<media-tooltip-shortcut class="media-tooltip-shortcut">
+</media-tooltip-shortcut>
+</media-tooltip>
+</media-controls-group>
+</media-tooltip-group>
+</media-controls-content>
+</media-controls>
+<media-hotkey keys="Space" action="togglePaused">
+</media-hotkey>
+<media-hotkey keys="k" action="togglePaused">
+</media-hotkey>
+<media-hotkey keys="m" action="toggleMuted">
+</media-hotkey>
+<media-hotkey keys="ArrowRight" action="seekStep">
+</media-hotkey>
+<media-hotkey keys="ArrowLeft" action="seekStep">
+</media-hotkey>
+<media-hotkey keys="l" action="seekStep">
+</media-hotkey>
+<media-hotkey keys="j" action="seekStep">
+</media-hotkey>
+<media-hotkey keys="ArrowUp" action="volumeStep">
+</media-hotkey>
+<media-hotkey keys="ArrowDown" action="volumeStep">
+</media-hotkey>
+<media-hotkey keys="0-9" action="seekToPercent">
+</media-hotkey>
+<media-hotkey keys="Home" action="seekToPercent" value="0">
+</media-hotkey>
+<media-hotkey keys="End" action="seekToPercent" value="100">
+</media-hotkey>
+<media-hotkey keys="&gt;" action="speedUp">
+</media-hotkey>
+<media-hotkey keys="&lt;" action="speedDown">
+</media-hotkey>
+<media-hotkey keys="f" action="toggleFullscreen">
+</media-hotkey>
+<media-hotkey keys="c" action="toggleSubtitles">
+</media-hotkey>
+<media-hotkey keys="i" action="togglePictureInPicture">
+</media-hotkey>
+<media-gesture type="tap" action="togglePaused" pointer="mouse" region="center">
+</media-gesture>
+<media-gesture type="tap" action="toggleControls" pointer="touch">
+</media-gesture>
+<media-gesture type="doubletap" action="seekStep" region="left">
+</media-gesture>
+<media-gesture type="doubletap" action="toggleFullscreen" region="center">
+</media-gesture>
+<media-gesture type="doubletap" action="seekStep" region="right">
+</media-gesture>
+<media-status-announcer class="media-status-announcer">
+</media-status-announcer>
+<div class="video-status-indicators">
+<media-volume-indicator class="media-indicator media-volume-indicator">
+<media-volume-indicator-fill class="media-indicator-content media-volume-indicator-fill">
+<media-icon name="volume-high" class="media-volume-indicator-high-icon">
+</media-icon>
+<media-icon name="volume-low" class="media-volume-indicator-low-icon">
+</media-icon>
+<media-icon name="volume-off" class="media-volume-indicator-off-icon">
+</media-icon>
+<media-volume-indicator-value class="media-volume-indicator-value">
+</media-volume-indicator-value>
+</media-volume-indicator-fill>
+</media-volume-indicator>
+<media-status-indicator actions="toggleSubtitles,toggleFullscreen,togglePictureInPicture" class="media-indicator media-status-indicator">
+<div class="media-indicator-content media-status-indicator-content">
+<media-icon name="captions-on" class="media-status-indicator-captions-on-icon">
+</media-icon>
+<media-icon name="captions-off" class="media-status-indicator-captions-off-icon">
+</media-icon>
+<media-icon name="fullscreen-enter" class="media-status-indicator-fullscreen-enter-icon">
+</media-icon>
+<media-icon name="fullscreen-exit" class="media-status-indicator-fullscreen-exit-icon">
+</media-icon>
+<media-icon name="pip-enter" class="media-status-indicator-pip-enter-icon">
+</media-icon>
+<media-icon name="pip-exit" class="media-status-indicator-pip-exit-icon">
+</media-icon>
+<media-status-indicator-value class="media-status-indicator-value">
+</media-status-indicator-value>
+</div>
+</media-status-indicator>
+<media-seek-indicator class="media-seek-indicator">
+<media-icon name="chevron" class="media-seek-indicator-icon">
+</media-icon>
+<media-seek-indicator-value class="media-seek-indicator-value">
+</media-seek-indicator-value>
+</media-seek-indicator>
+<media-status-indicator actions="togglePaused" class="media-playback-status-indicator">
+<media-icon name="play" class="media-playback-status-indicator-play-icon">
+</media-icon>
+<media-icon name="pause" class="media-playback-status-indicator-pause-icon">
+</media-icon>
+</media-status-indicator>
+</div>
+</media-container>
+</template>]]></template>
+  <template type="public" title="tyl_video_player_youtube_playlist" version_id="1000000" version_string="1.0.0 Dev 1"><![CDATA[<template class="js-tylYouTubePlaylistControls">
+<div class="tylVideoPlayerPlaylist" role="group" aria-label="{{ phrase('tyl_video_player_youtube_playlist')|for_attr }}">
+<span class="tylVideoPlayerAnnounce" data-tyl-playlist-status data-item-label="{{ phrase('tyl_video_player_playlist_item', {'number': '{number}'})|for_attr }}" role="status" aria-live="polite" aria-atomic="true"></span>
+<button class="button button--small" type="button" data-direction="previous" disabled>{{ phrase('tyl_video_player_previous_video') }}</button>
+<button class="button button--small" type="button" data-direction="next" disabled>{{ phrase('tyl_video_player_next_video') }}</button>
+<a class="button button--small" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer nofollow">{{ phrase('tyl_video_player_open_playlist') }}</a>
+</div>
+</template>]]></template>
+</templates>

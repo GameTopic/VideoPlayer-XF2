@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bb_codes>
+  <bb_code bb_code_id="vidstack" bb_code_mode="callback" has_option="optional" callback_class="TylerAustin\VideoPlayer\BbCode\Player" callback_method="render" option_regex="" trim_lines_after="1" plain_children="1" disable_smilies="1" disable_nl2br="1" disable_autolink="1" allow_empty="1" allow_signature="0" editor_icon_type="fa" editor_icon_value="fa-play-circle" active="1"><replace_html></replace_html><replace_html_email></replace_html_email><replace_text></replace_text></bb_code>
+  <bb_code bb_code_id="vidstackaudio" bb_code_mode="callback" has_option="optional" callback_class="TylerAustin\VideoPlayer\BbCode\Player" callback_method="render" option_regex="" trim_lines_after="1" plain_children="1" disable_smilies="1" disable_nl2br="1" disable_autolink="1" allow_empty="1" allow_signature="0" editor_icon_type="fa" editor_icon_value="fa-headphones" active="1"><replace_html></replace_html><replace_html_email></replace_html_email><replace_text></replace_text></bb_code>
+</bb_codes>
